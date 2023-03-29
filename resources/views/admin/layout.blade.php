@@ -112,7 +112,7 @@
                     <ul class="metismenu list-unstyled" id="side-menu">
                         <li class="menu-title">Menu</li>
                         <li>
-                            <a href="{{route('dashboard')}}" class="waves-effect">
+                            <a href="{{route('admin.dashboard')}}" class="waves-effect">
                                 <span>Dashboards</span>
                             </a>
                         </li>
@@ -123,7 +123,7 @@
                                 <span>Sản phẩm</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{route('product.list')}}">Danh sách sản phẩm</a></li>
+                                <li><a href="{{route('admin.products.list')}}">Danh sách sản phẩm</a></li>
                                 <li><a href="ecommerce-product-detail.html">Thêm sản phẩm</a></li>
                             </ul>
                         </li>
@@ -134,7 +134,7 @@
                                 <span>Danh mục</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="crypto-wallet.html">Danh sách danh mục</a></li>
+                                <li><a href="{{route('admin.categories.list')}}">Danh sách danh mục</a></li>
                                 <li><a href="crypto-buy-sell.html">Thêm danh mục</a></li>
                             </ul>
                         </li>
@@ -145,7 +145,7 @@
                                 <span>Nhà cung cấp</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="email-inbox.html">Danh sách nhà cung cấp</a></li>
+                                <li><a href="{{route('admin.suppliers.list')}}">Danh sách nhà cung cấp</a></li>
                                 <li><a href="email-read.html">Thêm nhà cung cấp</a></li>
                             </ul>
                         </li>
@@ -156,7 +156,7 @@
                                 <span>Banners</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="invoices-list.html">Danh sách banner</a></li>
+                                <li><a href="{{route('admin.banners.list')}}">Danh sách banner</a></li>
                                 <li><a href="invoices-detail.html">Thêm banner</a></li>
                             </ul>
                         </li>
@@ -166,26 +166,26 @@
                                 <span>Khuyến mãi</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="contacts-grid.html">Danh sách khuyến mãi</a></li>
+                                <li><a href="{{route('admin.discounts.list')}}">Danh sách khuyến mãi</a></li>
                                 <li><a href="contacts-list.html">Thêm khuyến mãi</a></li>
                             </ul>
                         </li>
 
                         <li>
-                            <a href="javascript: void(0);" class="waves-effect">
+                            <a href="{{route('admin.orders.list')}}" class="waves-effect">
                                 <i class="bx bx-basket"></i>
                                 <span>Đơn hàng</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="javascript: void(0);" class="waves-effect">
+                            <a href="{{route('admin.customers.list')}}" class="waves-effect">
                                 <i class="bx bx-user"></i>
                                 <span>Khách hàng</span>
                             </a>
                         </li>
                         <li>
-                            <a href="javascript: void(0);" class="waves-effect">
+                            <a href="{{route('admin.contacts.list')}}" class="waves-effect">
                                 <i class="bx bx-user-voice"></i>
                                 <span>Phản hồi khách hàng</span>
                             </a>
