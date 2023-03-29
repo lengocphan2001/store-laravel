@@ -55,17 +55,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('colors', ColorController::class);
         Route::resource('sizes', SizeController::class);
         Route::resource('products', ProductController::class);
-        Route::resource('orders', OrderController::class);
-        Route::resource('discounts', DiscountController::class);
-        Route::resource('contacts', ContactController::class);
-        Route::resource('customers', CustomerController::class);
+        Route::resource('orders', OrderController::class)->only(['index', 'show','destroy']);
+        Route::resource('contacts', ContactController::class)->only(['index', 'show','destroy']);
+        Route::resource('customers', CustomerController::class)->only(['index', 'show','destroy']);
         
         Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
             Route::post('/uploadFile', [ProductController::class, 'uploadFile'])->name('uploadFile');
             Route::put('/{product}/toggle-status', [ProductController::class, 'toggle'])->name('toggle');
             Route::put('/{product}/toggle', [ProductController::class, 'toggle'])->name('toggleStatus');
         });
-
     });
 });
 // user
