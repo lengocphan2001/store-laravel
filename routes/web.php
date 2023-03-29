@@ -9,7 +9,8 @@ use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\OrderController;
-
+use App\Http\Controllers\Admin\DiscountController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\HomeController;
@@ -34,12 +35,11 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
     Route::get('/login', [AuthController::class, 'formLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'checkLogin'])->name('checkLogin');
-    Route::group(['middleware' => 'auth'], function () {
+    Route::group([], function () {
         Route::get('/change-password', [PasswordController::class, 'formChangePassword'])->name('formChangePassword');
         Route::post('/change-password', [PasswordController::class, 'changePassword'])->name('changePassword');
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-
         Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
             Route::get('/', [UserController::class, 'index'])->name('list');
             Route::delete('/{user}/delete', [UserController::class, 'delete'])->name('delete');
@@ -94,16 +94,29 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
             Route::put('/{product}/toggle', [ProductController::class, 'toggle'])->name('toggleStatus');
         });
 
-        Route::group(['prefix' => 'oders', 'as' => 'oders.'], function () {
+        Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
             Route::get('/', [OrderController::class, 'index'])->name('list');
-            Route::get('{oder}/show', [OrderController::class, 'show'])->name('show');
-            Route::delete('{oder}/delete', [OrderController::class, 'delete'])->name('delete');
+            Route::get('{order}/show', [OrderController::class, 'show'])->name('show');
+            Route::delete('{order}/delete', [OrderController::class, 'delete'])->name('delete');
+        });
+        Route::group(['prefix' => 'discounts', 'as' => 'discounts.'], function () {
+            Route::get('/', [DiscountController::class, 'index'])->name('list');
+            Route::get('/create', [DiscountController::class, 'create'])->name('create');
+            Route::post('/store', [DiscountController::class, 'store'])->name('store');
+            Route::get('/{discount}/edit', [DiscountController::class, 'edit'])->name('edit');
+            Route::put('/{discount}/update', [DiscountController::class, 'update'])->name('update');
+            Route::delete('{discount}/delete', [DiscountController::class, 'delete'])->name('delete');
         });
 
         Route::group(['prefix' => 'contacts', 'as' => 'contacts.'], function () {
             Route::get('/', [ColorController::class, 'index'])->name('list');
             Route::get('{contact}/show', [ColorController::class, 'show'])->name('show');
             Route::delete('{contact}/delete', [ColorController::class, 'delete'])->name('delete');
+        });
+        Route::group(['prefix' => 'customers', 'as' => 'customers.'], function () {
+            Route::get('/', [CustomerController::class, 'index'])->name('list');
+            Route::get('{contact}/show', [CustomerController::class, 'show'])->name('show');
+            Route::delete('{contact}/delete', [CustomerController::class, 'delete'])->name('delete');
         });
     });
 });
