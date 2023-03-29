@@ -46,6 +46,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
         });
 
         Route::group(['prefix' => 'banners', 'as' => 'banners.'], function () {
+            Route::resource('/', BannerController::class);
             Route::get('/', [BannerController::class, 'index'])->name('list');
             Route::get('/create', [BannerController::class, 'create'])->name('create');
             Route::post('/store', [BannerController::class, 'store'])->name('store');

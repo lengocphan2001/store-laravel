@@ -9,7 +9,7 @@ class AuthController extends Controller
 {
     public function formLogin()
     {
-        return "ok";
+        return 'ok';
         // return view('admin.login');
     }
 }

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->smallInteger('status')->unsigned()->default(1);
+            $table->unsignedSmallInteger('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
