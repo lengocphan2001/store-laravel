@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('phone',20);
             $table->string('email',50)->unique();
             $table->string('address');
-            $table->smallInteger('status')->unsigned()->default(1);
+            $table->unsignedSmallInteger('status')->default(1);
             $table->timestamps();
         });
     }

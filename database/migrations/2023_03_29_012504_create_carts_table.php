@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->bigInteger('product_variation_id')->unsigned();
-            $table->foreign('product_variation_id')->references('id')->on('product_variations');
-            $table->bigInteger('quantity')->unsigned();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('product_variation_id');
+            $table->unsignedBigInteger('quantity');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('product_variation_id')->references('id')->on('product_variations')->onDelete('cascade');
             $table->timestamps();
         });
     }

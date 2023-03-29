@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('user_addresses', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('phone',20);
             $table->string('address');
-            $table->bigInteger('province_id')->unsigned();
-            $table->bigInteger('district_id')->unsigned();
-            $table->bigInteger('ward_id')->unsigned();
-            $table->smallInteger('is_default')->unsigned()->default(0);
+            $table->unsignedBigInteger('province_id');
+            $table->unsignedBigInteger('district_id');
+            $table->unsignedBigInteger('ward_id');
+            $table->unsignedSmallInteger('is_default')->default(0);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->timestamps();
         });
     }

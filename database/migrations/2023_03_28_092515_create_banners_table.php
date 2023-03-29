@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('image');
             $table->string('link')->nullable();
-            $table->smallInteger('status')->unsigned();
+            $table->unsignedSmallInteger('status');
             $table->timestamps();
         });
     }

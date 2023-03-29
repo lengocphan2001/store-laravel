@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->smallInteger('payment')->unsigned();
-            $table->smallInteger('status')->unsigned();
-            $table->bigInteger('total')->unsigned();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedSmallInteger('payment');
+            $table->unsignedSmallInteger('status');
+            $table->unsignedBigInteger('total');
+            $table->string('address');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

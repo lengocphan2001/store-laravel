@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('like_products', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('product_variation_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->bigInteger('product_variation_id')->unsigned();
             $table->foreign('product_variation_id')->references('id')->on('product_variations');
             $table->timestamps();
         });
