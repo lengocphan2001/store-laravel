@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Admin\SupplierController;
@@ -11,6 +12,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\HomeController;
@@ -32,7 +35,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/login', [AuthController::class, 'formLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'checkLogin'])->name('checkLogin');
     Route::group([], function () {
@@ -45,78 +48,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
             Route::delete('/{user}/delete', [UserController::class, 'delete'])->name('delete');
         });
 
-        Route::group(['prefix' => 'banners', 'as' => 'banners.'], function () {
-            Route::resource('/', BannerController::class);
-            Route::get('/', [BannerController::class, 'index'])->name('list');
-            Route::get('/create', [BannerController::class, 'create'])->name('create');
-            Route::post('/store', [BannerController::class, 'store'])->name('store');
-            Route::get('/{banner}/edit', [BannerController::class, 'edit'])->name('edit');
-            Route::put('/{banner}/update', [BannerController::class, 'update'])->name('update');
-            Route::delete('/{banner}/delete', [BannerController::class, 'delete'])->name('delete');
-        });
-
-        Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
-            Route::get('/', [CategoryController::class, 'index'])->name('list');
-            Route::get('/create', [CategoryController::class, 'create'])->name('create');
-            Route::post('/store', [CategoryController::class, 'store'])->name('store');
-            Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('edit');
-            Route::put('/{category}/update', [CategoryController::class, 'update'])->name('update');
-            Route::delete('{category}/delete', [CategoryController::class, 'delete'])->name('delete');
-        });
-
-        Route::group(['prefix' => 'suppliers', 'as' => 'suppliers.'], function () {
-            Route::get('/', [SupplierController::class, 'index'])->name('list');
-            Route::get('/create', [SupplierController::class, 'create'])->name('create');
-            Route::post('/store', [SupplierController::class, 'store'])->name('store');
-            Route::get('/{supplier}/edit', [SupplierController::class, 'edit'])->name('edit');
-            Route::put('/{supplier}/update', [SupplierController::class, 'update'])->name('update');
-            Route::delete('{supplier}/delete', [SupplierController::class, 'delete'])->name('delete');
-        });
-
-        Route::group(['prefix' => 'colors', 'as' => 'colors.'], function () {
-            Route::get('/', [ColorController::class, 'index'])->name('list');
-            Route::get('/create', [ColorController::class, 'create'])->name('create');
-            Route::post('/store', [ColorController::class, 'store'])->name('store');
-            Route::get('/{color}/edit', [ColorController::class, 'edit'])->name('edit');
-            Route::put('/{color}/update', [ColorController::class, 'update'])->name('update');
-            Route::delete('{color}/delete', [ColorController::class, 'delete'])->name('delete');
-        });
-
+        
+        Route::resource('banners', BannerController::class);
+        Route::resource('categories', CategoryController::class);
+        Route::resource('suppliers', SupplierController::class);
+        Route::resource('colors', ColorController::class);
+        Route::resource('sizes', SizeController::class);
+        Route::resource('products', ProductController::class);
+        Route::resource('orders', OrderController::class)->only(['index', 'show','destroy']);
+        Route::resource('contacts', ContactController::class)->only(['index', 'show','destroy']);
+        Route::resource('customers', CustomerController::class)->only(['index', 'show','destroy']);
+        
         Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
             Route::post('/uploadFile', [ProductController::class, 'uploadFile'])->name('uploadFile');
-            Route::get('/', [ProductController::class, 'index'])->name('list');
-            Route::get('/create', [ProductController::class, 'create'])->name('create');
-            Route::post('/store', [PostController::class, 'store'])->name('store');
-            Route::get('/{product:slug}/edit', [ProductController::class, 'edit'])->name('edit');
-            Route::put('/{product}/update', [ProductController::class, 'update'])->name('update');
-            Route::delete('/{product}/delete', [ProductController::class, 'delete'])->name('delete');
             Route::put('/{product}/toggle-status', [ProductController::class, 'toggle'])->name('toggle');
             Route::put('/{product}/toggle', [ProductController::class, 'toggle'])->name('toggleStatus');
-        });
-
-        Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
-            Route::get('/', [OrderController::class, 'index'])->name('list');
-            Route::get('{order}/show', [OrderController::class, 'show'])->name('show');
-            Route::delete('{order}/delete', [OrderController::class, 'delete'])->name('delete');
-        });
-        Route::group(['prefix' => 'discounts', 'as' => 'discounts.'], function () {
-            Route::get('/', [DiscountController::class, 'index'])->name('list');
-            Route::get('/create', [DiscountController::class, 'create'])->name('create');
-            Route::post('/store', [DiscountController::class, 'store'])->name('store');
-            Route::get('/{discount}/edit', [DiscountController::class, 'edit'])->name('edit');
-            Route::put('/{discount}/update', [DiscountController::class, 'update'])->name('update');
-            Route::delete('{discount}/delete', [DiscountController::class, 'delete'])->name('delete');
-        });
-
-        Route::group(['prefix' => 'contacts', 'as' => 'contacts.'], function () {
-            Route::get('/', [ColorController::class, 'index'])->name('list');
-            Route::get('{contact}/show', [ColorController::class, 'show'])->name('show');
-            Route::delete('{contact}/delete', [ColorController::class, 'delete'])->name('delete');
-        });
-        Route::group(['prefix' => 'customers', 'as' => 'customers.'], function () {
-            Route::get('/', [CustomerController::class, 'index'])->name('list');
-            Route::get('{contact}/show', [CustomerController::class, 'show'])->name('show');
-            Route::delete('{contact}/delete', [CustomerController::class, 'delete'])->name('delete');
         });
     });
 });
