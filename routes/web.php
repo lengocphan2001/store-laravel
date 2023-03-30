@@ -57,7 +57,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('products', ProductController::class);
         Route::resource('orders', OrderController::class)->only(['index', 'show','destroy']);
         Route::resource('contacts', ContactController::class)->only(['index', 'show','destroy']);
-        Route::resource('customers', CustomerController::class)->only(['index', 'show','destroy']);
+        Route::resource('users', UserController::class)->only(['index', 'show','destroy']);
         
         Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
             Route::post('/uploadFile', [ProductController::class, 'uploadFile'])->name('uploadFile');

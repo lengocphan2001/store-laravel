@@ -33,19 +33,19 @@
                     <div class="navbar-brand-box">
                         <a href="index.html" class="logo logo-dark">
                             <span class="logo-sm">
-                                <img src="{{ asset("assets\images\logo.svg")}}" alt="" height="22">
+                                <img src="{{ asset('assets\images\logo.svg') }}" alt="" height="22">
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ asset("assets\images\logo-dark.png")}}" alt="" height="17">
+                                <img src="{{ asset('assets\images\logo-dark.png') }}" alt="" height="17">
                             </span>
                         </a>
 
                         <a href="index.html" class="logo logo-light">
                             <span class="logo-sm">
-                                <img src="{{ asset("assets\images\logo-light.svg")}}" alt="" height="22">
+                                <img src="{{ asset('assets\images\logo-light.svg') }}" alt="" height="22">
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ asset("assets\images\logo-light.png")}}" alt="" height="19">
+                                <img src="{{ asset('assets\images\logo-light.png') }}" alt="" height="19">
                             </span>
                         </a>
                     </div>
@@ -83,8 +83,8 @@
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle header-profile-user" src="{{ asset("assets\images\users\avatar-1.jpg")}}"
-                                alt="Header Avatar">
+                            <img class="rounded-circle header-profile-user"
+                                src="{{ asset('assets\images\users\avatar-1.jpg') }}" alt="Header Avatar">
                             <span class="d-none d-xl-inline-block ml-1">Admin</span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
@@ -112,7 +112,7 @@
                     <ul class="metismenu list-unstyled" id="side-menu">
                         <li class="menu-title">Menu</li>
                         <li>
-                            <a href="{{route('admin.dashboard')}}" class="waves-effect">
+                            <a href="{{ route('admin.dashboard') }}" class="waves-effect">
                                 <span>Dashboards</span>
                             </a>
                         </li>
@@ -123,7 +123,7 @@
                                 <span>Sản phẩm</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{route('admin.products.list')}}">Danh sách sản phẩm</a></li>
+                                <li><a href="{{ route('admin.products.index') }}">Danh sách sản phẩm</a></li>
                                 <li><a href="ecommerce-product-detail.html">Thêm sản phẩm</a></li>
                             </ul>
                         </li>
@@ -134,7 +134,7 @@
                                 <span>Danh mục</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{route('admin.categories.list')}}">Danh sách danh mục</a></li>
+                                <li><a href="{{ route('admin.categories.index') }}">Danh sách danh mục</a></li>
                                 <li><a href="crypto-buy-sell.html">Thêm danh mục</a></li>
                             </ul>
                         </li>
@@ -145,7 +145,7 @@
                                 <span>Nhà cung cấp</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{route('admin.suppliers.list')}}">Danh sách nhà cung cấp</a></li>
+                                <li><a href="{{ route('admin.suppliers.index') }}">Danh sách nhà cung cấp</a></li>
                                 <li><a href="email-read.html">Thêm nhà cung cấp</a></li>
                             </ul>
                         </li>
@@ -156,36 +156,26 @@
                                 <span>Banners</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{route('admin.banners.list')}}">Danh sách banner</a></li>
+                                <li><a href="{{ route('admin.banners.index') }}">Danh sách banner</a></li>
                                 <li><a href="invoices-detail.html">Thêm banner</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="bx bxs-discount"></i>
-                                <span>Khuyến mãi</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{route('admin.discounts.list')}}">Danh sách khuyến mãi</a></li>
-                                <li><a href="contacts-list.html">Thêm khuyến mãi</a></li>
                             </ul>
                         </li>
 
                         <li>
-                            <a href="{{route('admin.orders.list')}}" class="waves-effect">
+                            <a href="{{ route('admin.orders.index') }}" class="waves-effect">
                                 <i class="bx bx-basket"></i>
                                 <span>Đơn hàng</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{route('admin.customers.list')}}" class="waves-effect">
+                            <a href="{{ route('admin.users.index') }}" class="waves-effect">
                                 <i class="bx bx-user"></i>
                                 <span>Khách hàng</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('admin.contacts.list')}}" class="waves-effect">
+                            <a href="{{ route('admin.contacts.index') }}" class="waves-effect">
                                 <i class="bx bx-user-voice"></i>
                                 <span>Phản hồi khách hàng</span>
                             </a>
@@ -206,19 +196,34 @@
     </div>
 
     <!-- JAVASCRIPT -->
-    <script src="{{ asset("assets\libs\jquery\jquery.min.js") }}"></script>
-    <script src="{{ asset("assets\libs\bootstrap\js\bootstrap.bundle.min.js") }}"></script>
-    <script src="{{ asset("assets\libs\metismenu\metisMenu.min.js") }}"></script>
-    <script src="{{ asset("assets\libs\simplebar\simplebar.min.js") }}"></script>
-    <script src="{{ asset("assets\libs\node-waves\waves.min.js")}}"></script>
+    <script src="{{ asset('assets\libs\jquery\jquery.min.js') }}"></script>
+    <script src="{{ asset('assets\libs\bootstrap\js\bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets\libs\metismenu\metisMenu.min.js') }}"></script>
+    <script src="{{ asset('assets\libs\simplebar\simplebar.min.js') }}"></script>
+    <script src="{{ asset("assets\libs\node-waves\waves.min.js") }}"></script>
 
+    <script src="{{asset("assets\libs\datatables.net-buttons\js\dataTables.buttons.min.js")}}"></script>
+    <script src="{{asset("assets\libs\datatables.net-buttons-bs4\js\buttons.bootstrap4.min.js")}}"></script>
+    <script src="{{asset("assets\libs\jszip\jszip.min.js")}}"></script>
+    <script src="{{asset("assets\libs\pdfmake\build\pdfmake.min.js")}}"></script>
+    <script src="{{asset("assets\libs\pdfmake\build\vfs_fonts.js")}}"></script>
+    <script src="{{asset("assets\libs\datatables.net-buttons\js\buttons.html5.min.js")}}"></script>
+    <script src="{{asset("assets\libs\datatables.net-buttons\js\buttons.print.min.js")}}"></script>
+    <script src="{{asset("assets\libs\datatables.net-buttons\js\buttons.colVis.min.js")}}"></script>
+    <!-- Responsive examples -->
+    <script src="{{ asset('assets\libs\datatables.net\js\jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets\libs\datatables.net-bs4\js\dataTables.bootstrap4.min.js') }}"></script>
+    <!-- Required datatable js -->
+    <script src="{{asset("assets\libs\datatables.net\js\jquery.dataTables.min.js")}}"></script>
+    <script src="{{asset("assets\libs\datatables.net-bs4\js\dataTables.bootstrap4.min.js")}}"></script>
     <!-- apexcharts -->
-    <script src="{{ asset("assets\libs\apexcharts\apexcharts.min.js")}}"></script>
+    <script src="{{ asset('assets\libs\apexcharts\apexcharts.min.js') }}"></script>
 
-    <script src="{{ asset("assets\js\pages\dashboard.init.js")}}"></script>
+
+    <script src="{{ asset('assets\js\pages\dashboard.init.js') }}"></script>
 
     <!-- App js -->
-    <script src="{{ asset("assets\js\app.js")}}"></script>
+    <script src="{{ asset('assets\js\app.js') }}"></script>
 </body>
 
 </html>
