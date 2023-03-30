@@ -20,12 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::join('user_addresses','users.id','=','user_addresses.user_id')
-                    ->join('provinces','user_addresses.province_id','=','provinces.id')
-                    ->join('districts','user_addresses.district_id','=','districts.id')
-                    ->join('wards','user_addresses.ward_id','=','wards.id')
-                    ->select('users.id','users.name','user_addresses.phone','users.email','provinces.name as province','districts.name as district','wards.name as ward')
-                    ->paginate(1);
+        $users = User::paginate(10);
         return view('admin.user.list',compact('users'));
     }
 

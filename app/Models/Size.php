@@ -14,4 +14,14 @@ class Size extends Model
     protected $fillable=[
         'name',
     ];
+
+    public function orderDetails()
+    {
+        return $this->belongsToMany(OrderDetail::class);
+    }
+
+    public function productVariations()
+    {
+        return $this->hasMany(ProductVariation::class);
+    }
 }

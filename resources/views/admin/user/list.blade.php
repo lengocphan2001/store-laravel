@@ -48,11 +48,11 @@
                                                 <tr>
                                                     <td>{{ $user->name }}</td>
                                                     <td>
-                                                        <p class="mb-1">{{ $user->phone }}</p>
+                                                        {{ $user->userAddress->phone }}
                                                     </td>
                                                     <td>{{ $user->email }}</td>
 
-                                                    <td>{{ $user->ward . ', ' . $user->district . ', ' . $user->province }}
+                                                    <td>{{ $user->userAddress->ward->name . ', ' . $user->userAddress->district->name . ', ' . $user->userAddress->province->name }}
                                                     </td>
                                                     <td>
                                                         <a href="#myModal_{{ $user->id }}" class="text-danger"
@@ -108,8 +108,8 @@
         </div>
     </div>
     <script src="{{ asset('assets\js\pages/toastr.init.js') }}"></script>
-    <script src="{{asset('assets\libs\toastr\build\toastr.min.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('assets\libs\toastr\build\toastr.min.css')}}">
+    <script src="{{ asset('assets\libs\toastr\build\toastr.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets\libs\toastr\build\toastr.min.css') }}">
     <script src="{{ asset('assets\libs\jquery\jquery.min.js') }}"></script>
     <script>
         $(document).ready(function() {

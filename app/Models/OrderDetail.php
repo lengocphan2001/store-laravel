@@ -17,4 +17,24 @@ class OrderDetail extends Model
         'quantity',
         'amount',
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function productVariation()
+    {
+        return $this->belongsTo(ProductVariation::class);
+    }
+
+    public function colors()
+    {
+        return $this->belongsTo(Color::class);
+    }
+
+    public function sizes()
+    {
+        return $this->belongsTo(Size::class);
+    }
 }
