@@ -14,6 +14,8 @@ class User extends Authenticatable
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;
+    public const DEFAULT = 1;
+    public const NOT_DEFAULT = 0;
 
     protected $table = 'users';
 
@@ -38,4 +40,9 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function userAddress()
+    {
+        return $this->hasOne(UserAddresses::class);
+    }
 }
