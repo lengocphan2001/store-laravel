@@ -20,9 +20,9 @@ return new class extends Migration
             $table->unsignedSmallInteger('status');
             $table->unsignedBigInteger('total');
             $table->string('address');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

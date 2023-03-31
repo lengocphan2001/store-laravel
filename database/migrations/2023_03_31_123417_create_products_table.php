@@ -25,10 +25,10 @@ return new class extends Migration
             $table->text('content');
             $table->unsignedBigInteger('price');
             $table->unsignedSmallInteger('status')->default(Product::STATUS_ACTIVE);
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
         });
     }
 

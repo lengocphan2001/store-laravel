@@ -10,6 +10,7 @@ class Size extends Model
 {
     use HasFactory, SoftDeletes;
 
+    public const NOT_SIZE = 0;
     protected $table = 'sizes';
 
     protected $fillable = [

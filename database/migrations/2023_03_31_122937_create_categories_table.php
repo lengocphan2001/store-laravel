@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedSmallInteger('status')->default(Category::STATUS_ACTIVE);
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

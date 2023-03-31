@@ -19,10 +19,10 @@ return new class extends Migration
             $table->unsignedBigInteger('product_variation_id');
             $table->unsignedBigInteger('quantity');
             $table->unsignedBigInteger('amount');
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->foreign('product_variation_id')->references('id')->on('product_variations')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('product_variation_id')->references('id')->on('product_variations')->onDelete('cascade');
         });
     }
 

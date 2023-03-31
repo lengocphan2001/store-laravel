@@ -10,6 +10,8 @@ class Color extends Model
 {
     use HasFactory, SoftDeletes;
 
+    public const NOT_COLOR = 0;
+
     protected $table = 'colors';
 
     protected $fillable = [

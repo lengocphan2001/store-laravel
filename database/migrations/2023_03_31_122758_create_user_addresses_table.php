@@ -24,9 +24,12 @@ return new class extends Migration
             $table->unsignedBigInteger('district_id');
             $table->unsignedBigInteger('ward_id');
             $table->unsignedSmallInteger('is_default')->default(User::DEFAULT);
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('province_id')->references('id')->on('provinces')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');
+            $table->foreign('ward_id')->references('id')->on('wards')->onDelete('cascade');
         });
     }
 
