@@ -4,7 +4,7 @@ return [
     'tables' => [
         'provinces' => 'provinces',
         'districts' => 'districts',
-        'wards'     => 'wards',
+        'wards' => 'wards',
     ],
 
     'columns' => [
