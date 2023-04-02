@@ -1,5 +1,13 @@
 <?php
 
+
+use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\LikeProductController;
+use App\Http\Controllers\User\OrderController;
+use App\Http\Controllers\User\PasswordController;
+use App\Http\Controllers\User\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +21,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
+    Route::get('/login', [AuthController::class, 'formLogin'])->name('login');
+    Route::get('/register', [AuthController::class, 'formRegister'])->name('formRegister');
+    Route::post('/register', [PasswordController::class, 'register'])->name('register');
+    Route::get('/forgotpassword', [PasswordController::class, 'formForgotpassword'])->name('formForgotpassword');
+    Route::post('/forgotpassword', [PasswordController::class, 'forgotpassword'])->name('forgotpassword');
+    Route::get('/categories/{category:slug}', [HomeController::class, 'category'])->name('categories.index');
+    Route::get('/products', [HomeController::class, 'postList'])->name('products.index');
+    Route::get('/product-detail/{product:slug}', [HomeController::class, 'detail'])->name('product.detail');
+    Route::get('/products/search', [HomeController::class, 'searchProducts'])->name('searchProducts');
+    Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/change-password', [PasswordController::class, 'formChangePassword'])->name('formChangePassword');
+        Route::post('/change-password', [PasswordController::class, 'changePassword'])->name('changePassword');
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+        Route::get('/order', [OrderController::class, 'index'])->name('oderProduct');
+        Route::get('/cart', [CartController::class, 'index'])->name('cartProduct');
+        Route::get('/payment', [PaymentController::class, 'payWithStripe'])->name('cartProduct');
+        Route::get('/like-products', [LikeProductController::class, 'index'])->name('likeProduct');
+    });
 });
