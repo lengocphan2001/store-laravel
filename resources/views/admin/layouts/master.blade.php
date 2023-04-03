@@ -56,9 +56,10 @@
                 <!-- End Page-content -->
 
                 <!-- Transaction Modal -->
-                <div class="modal fade deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+                <div class="modal fade deleteModal " tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
                     aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-top" role="document">
+                    <div class="modal-dialog modal-confirm modal-dialog-top" role="document">
+
                         <div class="modal-content">
                             <form id="deleteForm" action="" method="post">
                                 @csrf
@@ -79,31 +80,71 @@
                                 </div>
                             </form>
                         </div>
+                        <!-- Sidebar -->
                     </div>
                 </div>
-                <!-- end modal -->
+                <!-- Left Sidebar End -->
 
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                Copyright {{ date('Y') }} © to <a
-                                    href="{{ route('admin.dashboard') }}"><b>{{ config('app.name') }}</b></a>.
-                            </div>
-                            <div class="col-sm-6 text-right">
-                                <div class="text-sm-end d-none d-sm-block">
-                                    {{ __('admin.label.load_page', ['second' => round(microtime(true) - LARAVEL_START, 2)]) }}
-                                </div>
+                <!-- ============================================================== -->
+                <!-- Start right Content here -->
+                <!-- ============================================================== -->
+                <div class="main-content">
+
+                    <div class="page-content">
+                        @yield('admin_content')
+                        <!-- container-fluid -->
+                    </div>
+                    <!-- End Page-content -->
+
+                    <!-- Transaction Modal -->
+                    <div class="modal fade deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-top" role="document">
+                            <div class="modal-content">
+                                <form id="deleteForm" action="" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <div class="modal-header" style="border: none;">
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <h5 class="text-center" id="deleteMessage"></h5>
+                                    </div>
+                                    <div class="modal-footer d-flex align-items-center justify-content-center"
+                                        style="border: none">
+                                        <button type="button" class="btn btn-warning me-2"
+                                            data-bs-dismiss="modal">{{ __('admin.action.cancel') }}
+                                        </button>
+                                        <button type="submit" class="btn btn-danger"><i class="bx bx-trash"></i>
+                                            {{ __('admin.action.delete') }}</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </footer>
+                    <!-- end modal -->
+
+                    <footer class="footer">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    Copyright {{ date('Y') }} © to <a
+                                        href="{{ route('admin.dashboard') }}"><b>{{ config('app.name') }}</b></a>.
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <div class="text-sm-end d-none d-sm-block">
+                                        {{ __('admin.label.load_page', ['second' => round(microtime(true) - LARAVEL_START, 2)]) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+                <!-- end main content-->
+
             </div>
-            <!-- end main content-->
+            <!-- END layout-wrapper -->
 
-        </div>
-        <!-- END layout-wrapper -->
-
-        @include('admin.includes.script')
+            @include('admin.includes.script')
     </body>
 @endsection

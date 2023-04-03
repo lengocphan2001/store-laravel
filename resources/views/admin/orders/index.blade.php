@@ -1,4 +1,4 @@
-@php use App\Models\User; @endphp
+@php use App\Models\Order; @endphp
 @extends('admin.layouts.master')
 @section('admin_head')
     <title>{{ $data['title'] }}</title>
@@ -20,7 +20,7 @@
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><span><i
                                             class="bx bxs-home-circle"></i> {{ __('admin.sidebar.dashboard') }}</span></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ __('admin.sidebar.customer') }}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('admin.sidebar.order') }}</li>
                         </ol>
                     </div>
                 </div>
@@ -34,34 +34,36 @@
                     <div class="card-body">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
                             <div class="page-title-right">
-                                <h4 class="card-title">{{ __('admin.sidebar.customer') }}</h4>
+                                <h4 class="card-title">{{ __('admin.sidebar.order') }}</h4>
                             </div>
                         </div>
                         <table id="datatable" class="table table-bordered dt-responsive nowrap"
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th class="text-center align-middle">{{ __('admin.label.customer.name') }}</th>
-                                    <th class="text-center align-middle">{{ __('admin.label.phone') }}</th>
-                                    <th class="text-center align-middle">{{ __('admin.label.email') }}</th>
+                                    <th class="text-center align-middle">{{ __('admin.label.order.id') }}</th>
+                                    <th class="text-center align-middle">{{ __('admin.label.order.customer') }}</th>
+                                    <th class="text-center align-middle">{{ __('admin.label.order.date') }}</th>
+                                    <th class="text-center align-middle">{{ __('admin.label.total') }}</th>
                                     <th class="text-center align-middle">{{ __('admin.label.address') }}</th>
-                                    <th class="text-center align-middle">{{ __('admin.label.action') }}</th>
+                                    <th class="text-center align-middle">{{ __('admin.label.payment') }}</th>
+                                    <th class="text-center align-middle">{{ __('admin.label.detail') }}</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @foreach ($data['customers'] as $result)
+                                @foreach ($data['orders'] as $result)
                                     <tr>
-                                        <td class="align-middle">{{ $result['name'] }}</td>
-                                        <td class="align-middle">{{ $result->userAddress->phone }}</td>
-                                        <td class="align-middle">{{ $result->email}}</td>
-                                        <td class="align-middle">{{ $result->userAddress->ward->name . ', ' . $result->userAddress->district->name . ', ' . $result->userAddress->province->name }}</td>
-                                        <td class="text-center align-middle">
-                                            <a href="javascript:void(0)" data-id="{{ $result['id'] }}"
-                                                data-message="{{ __('admin.label.confirm_delete') }}"
-                                                data-url="{{ route('admin.customers.destroy', $result['id']) }}"
-                                                class="btn btn-danger delete" data-bs-toggle="modal"
-                                                data-bs-target=".deleteModal"><i class="bx bx-trash"></i></a>
+                                        <td class="align-middle">{{ $result['id'] }}</td>
+                                        <td class="align-middle">{{ $result->user->name }}</td>
+                                        <td class="align-middle">{{ date('d-m-Y', strtotime($result->created_at)) }}</td>
+                                        <td class="align-middle">{{ number_format($result->total) }}</td>
+                                        <td class="align-middle">{{ $result->user->userAddress->ward->name . ', ' . $result->user->userAddress->district->name . ', ' . $result->user->userAddress->province->name }}</td>
+                                        <td class="align-middle">{{ $result->payment == 1 ? __('admin.label.order.online')  : __('admin.label.order.cod')  }}</td>
+                                        <td class="align-middle">
+                                            <a href="{{route('admin.orders.show',$result['id'])}}" type="button" class="btn btn-primary btn-sm btn-rounded">
+                                                {{ __('admin.label.detail') }}
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -4,6 +4,12 @@ return [
     'sidebar' => [
         'dashboard' => 'Trang chủ',
         'banner' => 'Banner',
+        'product' => 'Sản phẩm',
+        'category' => 'Danh mục',
+        'supplier' => 'Nhà cung cấp',
+        'order' => 'Đơn hàng',
+        'customer' => 'Khách hàng',
+        'contact' => 'Liên hệ phản hồi',
         'profile' => 'Trang cá nhân',
     ],
 
@@ -12,8 +18,9 @@ return [
         'update' => 'Cập nhật',
         'detail' => 'Chi tiết',
         'list' => 'Danh sách',
-        'cancel' => "Hủy",
-        'delete' => 'Xóa'
+        'delete' => 'Xóa',
+        'cancel' => 'Hủy'
+
     ],
 
     'button' => [
@@ -48,15 +55,57 @@ return [
             'title' => 'Banner',
             'name' => 'banner',
         ],
+        'product' => [
+            'title' => 'Sản phẩm',
+            'name' => 'Sản phẩm',
+        ],
+        'category' => [
+            'title' => 'Danh mục',
+            'name' => 'danh mục',
+        ],
+        'supplier' => [
+            'title' => 'Nhà cung cấp',
+            'name' => 'nhà cung cấp',
+        ],
+        'order' => [
+            'title' => 'Đơn hàng',
+            'name' => 'đơn hàng',
+            'id' => 'ID Đơn hàng',
+            'customer' => ' Người mua',
+            'date' => 'Ngày mua',
+            'detail' => 'Chi tiết đơn hàng',
+            'online' => 'Online',
+            'cod' => 'COD'
+        ],
+        'customer' => [
+            'title' => 'Khách hàng',
+            'name' => 'Tên khách hàng',
+        ],
+        'contact' => [
+            'title' => 'Phản hồi',
+            'name' => 'phản hồi',
+        ],
         'status' => [
             'title' => 'Trạng thái',
             'active' => 'Hoạt động',
             'inactive' => 'Tắt',
         ],
+        'totalOrder' => 'Tổng đơn hàng',
+        'revenue' => 'Doanh thu',
+        'totalUser' => 'Tổng số người dùng',
+        'total' => 'Tổng tiền',
+        'payment' => 'Phương thức thanh toán',
+        'detail' => 'Chi tiết',
+        'phone' => 'Số địa thoại',
+        'address' => 'Địa chỉ',
         'image' => 'Hình ảnh',
         'title' => 'Tiêu đề',
         'action' => 'Hành động',
+        'color' => "Màu",
+        'size' => "Size",
+        'quantity' => "Số lượng",
         'link' => 'Đường dẫn'
+
     ],
 
     'placeholder' => [

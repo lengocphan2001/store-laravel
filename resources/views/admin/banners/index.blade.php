@@ -82,10 +82,14 @@
                                                 class="btn btn-primary mr-3" style="margin-right: 10px;"><i
                                                     class="bx bx-pencil"></i></a>
                                             <a href="javascript:void(0)" data-id="{{ $result['id'] }}"
+                                                data-toggle="modal"
                                                 data-message="{{ __('admin.label.confirm_delete') }}"
                                                 data-url="{{ route('admin.banners.destroy', ['banner' => $result['id']]) }}"
-                                                class="btn btn-danger delete" data-bs-toggle="modal"
-                                                data-bs-target=".deleteModal"><i class="bx bx-trash"></i></a>
+                                                class="btn btn-danger delete" 
+                                                data-bs-toggle="modal"
+                                                data-bs-target=".deleteModal">
+                                                <i class="bx bx-trash"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
