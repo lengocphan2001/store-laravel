@@ -5,5 +5,4 @@ return [
         'email' => 50,
         'password' => 32,
     ],
-
 ];

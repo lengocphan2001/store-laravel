@@ -46,6 +46,7 @@
                                 <tr>
                                     <th class="text-center align-middle">{{ __('admin.label.image') }}</th>
                                     <th class="text-center align-middle">{{ __('admin.label.title') }}</th>
+                                    <th class="text-center align-middle">{{ __('admin.label.link') }}</th>
                                     <th class="text-center align-middle">{{ __('admin.label.status.title') }}</th>
                                     <th class="text-center align-middle">{{ __('admin.label.action') }}</th>
                                 </tr>
@@ -54,13 +55,17 @@
                             <tbody>
                                 @foreach ($data['banners'] as $result)
                                     <tr>
-                                        <td><img class="image-list-product"
-                                                src="{{ asset($result['image']) }}"
+                                        <td><img class="image-list-product" src="{{ asset($result['image']) }}"
                                                 alt="Ảnh lỗi">
                                         </td>
                                         <td class="align-middle">
                                             <a href="{{ route('admin.banners.edit', ['banner' => $result['id']]) }}">
                                                 {{ $result['title'] }}
+                                            </a>
+                                        </td>
+                                        <td class="align-middle">
+                                            <a href="{{ $result['link'] }}">
+                                                {{ $result['link'] }}
                                             </a>
                                         </td>
                                         <td class="text-center align-middle">

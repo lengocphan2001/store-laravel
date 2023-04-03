@@ -56,11 +56,17 @@ return [
         'image' => 'Hình ảnh',
         'title' => 'Tiêu đề',
         'action' => 'Hành động',
+        'link' => 'Đường dẫn'
     ],
 
     'placeholder' => [
         'email' => 'Nhập email',
         'password' => 'Nhập mật khẩu',
+        'banner' =>
+        [
+            'title' => 'Nhập tiêu đề',
+            'link' => 'Nhập đường dẫn'
+        ],
     ],
 
     'response' => [

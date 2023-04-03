@@ -1,8 +1,8 @@
 @php use App\Models\Banner; @endphp
 @extends('admin.layouts.master')
 @section('admin_head')
-    {{-- <title>{{ $data['title'] }}</title>
-    <meta content="{{ $data['title'] }}" name="description" /> --}}
+    <title>{{ $data['title'] }}</title>
+    <meta content="{{ $data['title'] }}" name="description" />
 @endsection
 
 @section('admin_style')
@@ -56,7 +56,7 @@
                                         </label>
                                         <div class="title">
                                             <input type="text" class="form-control" id="name"
-                                                placeholder="Tiêu đề banner" name="title">
+                                                placeholder="{{ __('admin.placeholder.banner.title') }}" name="title">
                                         </div>
                                         @if ($errors->has('title'))
                                             <div class='text-danger mt-2'>
@@ -68,8 +68,13 @@
                                         </label>
                                         <div class="title">
                                             <input type="text" class="form-control" id="name"
-                                                placeholder="Link banner" name="link">
+                                                placeholder="{{ __('admin.placeholder.banner.link') }}" name="link">
                                         </div>
+                                        @if ($errors->has('link'))
+                                            <div class='text-danger mt-2'>
+                                                * {{ $errors->first('link') }}
+                                            </div>
+                                        @endif
                                         <!-- Error -->
                                     </div>
                                 </div>

@@ -7,6 +7,7 @@ use App\Models\Banner;
 use App\Services\Service;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Storage;
 
@@ -29,15 +30,40 @@ class BannerService extends Service
         $filename = str_replace('.jpeg', '', $filename);
         $filename = str_replace('.jpg', '', $filename);
         $filename = str_replace('.png', '', $filename);
+
         return $filename;
     }
 
+    /**
+     * uploadImage
+     *
+     * @param $data
+     * 
+     * @return $path
+     */
 
+    public function uploadFile($data)
+    {
+        $file = $data['image'];
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $filename = $this->replace($filename);
+        $image = Image::make($file)->encode('webp', 90)->resize(270, 250)->save(storage_path('app/public/images/banners/' . $filename . '.webp'));
+        $path = 'storage/images/banners/' . $filename . '.webp';
+
+        return $path;
+    }
+
+    /**
+     * deleteImage
+     *
+     * @param $path
+     */
 
     public function deleteFile($path)
     {
         if (file_exists($path)) {
-            unlink($path);
+            $deletedFile = File::delete($path);
+            if ($deletedFile == null) echo 'deleted';
         }
     }
 
@@ -48,13 +74,7 @@ class BannerService extends Service
      */
     public function create($data)
     {
-        $file = $data['image'];
-        $filename = time() . '_' . $file->getClientOriginalName();
-        $filename = $this->replace($filename);
-        $image = Image::make($file)->encode('webp', 90)->resize(270, 250)->save(storage_path('app/public/images/banners/' . $filename . '.webp'));
-        $path = 'storage/images/banners/' . $filename . '.webp';
-        $data['image'] = $path;
-        $data['status'] = 1;
+        $data['image'] = $this->uploadFile($data);
         Banner::create($data);
     }
 
@@ -67,14 +87,8 @@ class BannerService extends Service
     public function update($banner, $data)
     {
         if (isset($data['image'])) {
-            $file = $data['image'];
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $filename = $this->replace($filename);
-            Image::make($file)->encode('webp', 90)->resize(250, 250)->save(storage_path('app/public/images/banners/' . $filename . '.webp'));
-            $path = 'storage/images/banners/' . $filename . '.webp';
-            $data['image'] = $path;
+            $data['image'] = $this->uploadFile($data);
         }
-        $data['status'] = 1;
         $banner->update($data);
     }
 
@@ -88,7 +102,7 @@ class BannerService extends Service
         $banner = Banner::query()->where('id', $id)->first();
         if (!$banner) {
             abort(404);
-        } //end if
+        }
         $this->deleteFile($banner->image);
         $banner->delete();
     }

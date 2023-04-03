@@ -1,8 +1,8 @@
 @php use App\Models\Banner; @endphp
 @extends('admin.layouts.master')
 @section('admin_head')
-    {{-- <title>{{ $data['title'] }}</title>
-    <meta content="{{ $data['title'] }}" name="description" /> --}}
+    <title>{{ $data['title'] }}</title>
+    <meta content="{{ $data['title'] }}" name="description" />
 @endsection
 
 @section('admin_style')
@@ -30,14 +30,14 @@
             <div class="card-body">
                 <div class="bank-inner-details">
                     <div class="row">
-                        <form action="{{ route('admin.banners.update', $banner['id']) }}" enctype="multipart/form-data"
-                            method="post">
+                        <form action="{{ route('admin.banners.update', $data['banner']->id) }}"
+                            enctype="multipart/form-data" method="post">
                             @csrf
                             @method('PUT')
                             <div class="option-blog">
                                 <div class="blog-image">
                                     <input type="file" name="image" id="file" hidden
-                                        src="{{ asset($banner['image']) }}">
+                                        src="{{ asset($data['banner']->image) }}">
                                     <div class="img-area">
                                         <i class='bx bxs-cloud-upload icon'></i>
                                         <h3>Tải ảnh lên</h3>
@@ -59,7 +59,8 @@
                                         </label>
                                         <div class="title">
                                             <input type="text" class="form-control" id="name"
-                                                placeholder="Tiêu đề banner" name="title" value="{{ $banner['title'] }}">
+                                                placeholder="{{ __('admin.placeholder.banner.title') }}" name="title"
+                                                value="{{ $data['banner']->title }}">
                                         </div>
                                         @if ($errors->has('title'))
                                             <div class='text-danger mt-2'>
@@ -71,7 +72,8 @@
                                         </label>
                                         <div class="title">
                                             <input type="text" class="form-control" id="name"
-                                                placeholder="Link banner" name="link" value="{{ $banner['link'] }}">
+                                                placeholder="{{ __('admin.placeholder.banner.title') }}" name="link"
+                                                value="{{ $data['banner']->link }}">
                                         </div>
                                         <!-- Error -->
                                     </div>

@@ -1,0 +1,47 @@
+<?php
+
+namespace App\Http\Requests\Admin\Banner;
+
+use App\Helpers\AdminHelper;
+use Illuminate\Foundation\Http\FormRequest;
+
+class BannerRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, mixed>
+     */
+    public function rules(): array
+    {
+        return [
+            'image' => ['file', 'image', 'required'],
+            'title' => ['required', 'min:5', 'unique:banners,title'],
+            'link' => 'required|url'
+        ];
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, mixed>
+     */
+    public function attributes(): array
+    {
+        return [
+            'image' => trans('admin.label.image'),
+            'title' => trans('admin.label.title'),
+            'link' => trans('admin.label.link'),
+        ];
+    }
+}
