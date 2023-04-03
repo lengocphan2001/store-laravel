@@ -2,19 +2,29 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\AdminHelper;
 use App\Http\Controllers\Controller;
+use App\Services\Admin\CustomerService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
-    public function index()
+    public function index(): Application|Factory|View
     {
-        //
+        $data['title'] = AdminHelper::getPageTitle(trans('admin.label.customer.title'));
+        $data['customers'] = CustomerService::getInstance()->getListCustomers();
+
+        return view('admin.customers.index')->with(['data' => $data]);
     }
 
     /**
