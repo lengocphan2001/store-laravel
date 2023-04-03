@@ -19,7 +19,9 @@ return [
         'detail' => 'Chi tiết',
         'list' => 'Danh sách',
         'delete' => 'Xóa',
-        'cancel' => 'Hủy'
+        'cancel' => 'Hủy',
+        'export' => 'Xuất Excell',
+
 
     ],
 
@@ -96,7 +98,7 @@ return [
         'total' => 'Tổng tiền',
         'payment' => 'Phương thức thanh toán',
         'detail'=> 'Chi tiết',
-        'phone' => 'Số địa thoại',
+        'phone' => 'Số điện thoại',
         'address' => 'Địa chỉ',
         'image' => 'Hình ảnh',
         'title' => 'Tiêu đề',
