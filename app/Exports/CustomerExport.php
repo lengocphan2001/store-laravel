@@ -17,7 +17,9 @@ class CustomerExport implements FromCollection, WithMapping, WithHeadings,Should
      */
     public function collection()
     {
-        return User::select('id', 'name', 'email')->get();
+        return User::select('id', 'name', 'email')
+        ->with(['userAddress','userAddress.ward','userAddress.district','userAddress.province'])
+        ->get();
     }
 
     /**
