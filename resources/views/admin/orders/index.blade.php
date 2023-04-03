@@ -59,10 +59,10 @@
                                         <td class="align-middle">{{ date('d-m-Y', strtotime($result->created_at)) }}</td>
                                         <td class="align-middle">{{ number_format($result->total) }}</td>
                                         <td class="align-middle">{{ $result->user->userAddress->ward->name . ', ' . $result->user->userAddress->district->name . ', ' . $result->user->userAddress->province->name }}</td>
-                                        <td class="align-middle">{{ $result->payment == 1 ? 'Online' : 'COD' }}</td>
+                                        <td class="align-middle">{{ $result->payment == 1 ? __('admin.label.order.online')  : __('admin.label.order.cod')  }}</td>
                                         <td class="align-middle">
                                             <a href="{{route('admin.orders.show',$result['id'])}}" type="button" class="btn btn-primary btn-sm btn-rounded">
-                                            Xem chi tiết
+                                                {{ __('admin.label.detail') }}
                                             </a>
                                         </td>
                                     </tr>

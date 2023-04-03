@@ -73,7 +73,9 @@ return [
             'id' => 'ID Đơn hàng',
             'customer' => ' Người mua',
             'date' => 'Ngày mua',
-            'detail' => 'Chi tiết đơn hàng'
+            'detail' => 'Chi tiết đơn hàng',
+            'online' => 'Online',
+            'cod' => 'COD'
         ],
         'customer' => [
             'title' => 'Khách hàng',
@@ -88,6 +90,9 @@ return [
             'active' => 'Hoạt động',
             'inactive' => 'Tắt',
         ],
+        'totalOrder' => 'Tổng đơn hàng',
+        'revenue' => 'Doanh thu',
+        'totalUser' => 'Tổng số người dùng',
         'total' => 'Tổng tiền',
         'payment' => 'Phương thức thanh toán',
         'detail'=> 'Chi tiết',

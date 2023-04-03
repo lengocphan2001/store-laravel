@@ -37,7 +37,7 @@
                                             <div class="card-body">
                                                 <div class="media">
                                                     <div class="media-body">
-                                                        <p class="text-muted font-weight-medium">Tổng đơn hàng</p>
+                                                        <p class="text-muted font-weight-medium">{{ trans('admin.label.totalOrder') }}</p>
                                                         <h4 class="mb-0">1,235</h4>
                                                     </div>
                     
@@ -55,7 +55,7 @@
                                             <div class="card-body">
                                                 <div class="media">
                                                     <div class="media-body">
-                                                        <p class="text-muted font-weight-medium">Doanh thu</p>
+                                                        <p class="text-muted font-weight-medium">{{ trans('admin.label.revenue') }}</p>
                                                         <h4 class="mb-0">$35, 723</h4>
                                                     </div>
                     
@@ -73,7 +73,7 @@
                                             <div class="card-body">
                                                 <div class="media">
                                                     <div class="media-body">
-                                                        <p class="text-muted font-weight-medium">Số lượng người dùng</p>
+                                                        <p class="text-muted font-weight-medium">{{ trans('admin.label.totalUser') }}</p>
                                                         <h4 class="mb-0">$16.2</h4>
                                                     </div>
                     
