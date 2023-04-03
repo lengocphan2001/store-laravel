@@ -39,7 +39,7 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('list');
         Route::delete('/{user}/delete', [UserController::class, 'delete'])->name('delete');
     });
-    Route::resource('/banners', BannerController::class);
+    Route::resource('banners', BannerController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('suppliers', SupplierController::class);
     Route::resource('colors', ColorController::class);

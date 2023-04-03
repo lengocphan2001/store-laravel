@@ -4,6 +4,7 @@
         let id = $(this).attr('data-message');
         $('#deleteForm').attr('action', url);
         $('#deleteMessage').html(`${id}`);
+        $('.modal').modal();
     });
 </script>
 
