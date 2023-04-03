@@ -28,8 +28,6 @@ class AdminComposer
     {
         $user = $this->admin;
         // $user['avatar'] = FileHelper::getFullUrl($user['avatar']);
-
         $view->with('adminLogin', $user);
     }
-
 }

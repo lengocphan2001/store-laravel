@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\AdminHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use App\Services\Admin\BannerService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -23,7 +24,6 @@ class BannerController extends Controller
     {
         $data['title'] = AdminHelper::getPageTitle(trans('admin.label.banner.title'));
         $data['banners'] = BannerService::getInstance()->getListBanners();
-
         return view('admin.banners.index')->with(['data' => $data]);
     }
 
@@ -34,7 +34,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.banners.create');
     }
 
     /**
@@ -45,7 +45,11 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        BannerService::getInstance()->create($request->all());
+        $data['title'] = AdminHelper::getPageTitle(trans('admin.label.banner.title'));
+        $data['banners'] = BannerService::getInstance()->getListBanners();
+        toastr(trans('admin.response.create', ['name' => trans('admin.label.banner.name')]));
+        return redirect(route('admin.banners.index'))->with(['data', $data]);
     }
 
     /**
@@ -67,7 +71,8 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $banner = Banner::where('id', $id)->first();
+        return view('admin.banners.edit')->with(['banner' => $banner]);
     }
 
     /**
@@ -79,7 +84,11 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $banner = Banner::where('id', $id)->first();
+        $data = $request->all();
+        BannerService::getInstance()->update($banner, $data);
+        toastr(trans('admin.response.update', ['name' => trans('admin.label.banner.name')]));
+        return redirect(route('admin.banners.index'));
     }
 
     /**
@@ -92,7 +101,6 @@ class BannerController extends Controller
     {
         BannerService::getInstance()->delete($id);
         toastr(trans('admin.response.delete', ['name' => trans('admin.label.banner.name')]));
-
-        return redirect()->back();
+        return redirect(route('admin.banners.index'));
     }
 }

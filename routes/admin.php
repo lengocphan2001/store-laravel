@@ -39,15 +39,15 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('list');
         Route::delete('/{user}/delete', [UserController::class, 'delete'])->name('delete');
     });
-    Route::resource('/banners', BannerController::class);
+    Route::resource('banners', BannerController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('suppliers', SupplierController::class);
     Route::resource('colors', ColorController::class);
     Route::resource('sizes', SizeController::class);
     Route::resource('products', ProductController::class);
-    Route::resource('orders', OrderController::class)->only(['index', 'show','destroy']);
-    Route::resource('contacts', ContactController::class)->only(['index', 'show','destroy']);
-    Route::resource('customers', CustomerController::class)->only(['index', 'show','destroy']);
+    Route::resource('orders', OrderController::class)->only(['index', 'show', 'destroy']);
+    Route::resource('contacts', ContactController::class)->only(['index', 'show', 'destroy']);
+    Route::resource('customers', CustomerController::class)->only(['index', 'show', 'destroy']);
     Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
         Route::post('/uploadFile', [ProductController::class, 'uploadFile'])->name('uploadFile');
         Route::put('/{product}/toggle-status', [ProductController::class, 'toggle'])->name('toggle');

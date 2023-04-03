@@ -54,7 +54,10 @@
                             <tbody>
                                 @foreach ($data['banners'] as $result)
                                     <tr>
-                                        <td class="align-middle">{{ $result['title'] ?? '' }}</td>
+                                        <td><img class="image-list-product"
+                                                src="{{ asset($result['image']) }}"
+                                                alt="Ảnh lỗi">
+                                        </td>
                                         <td class="align-middle">
                                             <a href="{{ route('admin.banners.edit', ['banner' => $result['id']]) }}">
                                                 {{ $result['title'] }}

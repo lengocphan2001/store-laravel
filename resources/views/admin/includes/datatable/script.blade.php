@@ -1,14 +1,15 @@
 <script>
-    $(document).on('click', '.delete', function () {
+    $(document).on('click', '.delete', function() {
         let url = $(this).attr('data-url');
         let id = $(this).attr('data-message');
         $('#deleteForm').attr('action', url);
         $('#deleteMessage').html(`${id}`);
+        $('.modal').modal();
     });
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#datatable').dataTable({
             'language': {
                 'zeroRecords': "{{ __('admin.label.datatable.zeroRecords') }}",

@@ -12,6 +12,8 @@ return [
         'update' => 'Cập nhật',
         'detail' => 'Chi tiết',
         'list' => 'Danh sách',
+        'cancel' => "Hủy",
+        'delete' => 'Xóa'
     ],
 
     'button' => [
