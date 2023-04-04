@@ -51,6 +51,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::resource('customers', CustomerController::class)->only(['index', 'show', 'destroy']);
     Route::group(['prefix' => 'export', 'as' => 'export.'], function () {
         Route::get('customers', [ExportController::class, 'exportCustomer'])->name('customers');
+        Route::get('orders', [ExportController::class, 'exportOrder'])->name('orders');
     });
     Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
         Route::post('/uploadFile', [ProductController::class, 'uploadFile'])->name('uploadFile');

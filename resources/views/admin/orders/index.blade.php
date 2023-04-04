@@ -36,6 +36,9 @@
                             <div class="page-title-right">
                                 <h4 class="card-title">{{ __('admin.sidebar.order') }}</h4>
                             </div>
+                            <a class="btn btn-primary" href="{{ route('admin.export.orders') }}">
+                                <i class="bx bx-export"></i> {{ __('admin.action.export') }}
+                            </a>
                         </div>
                         <table id="datatable" class="table table-bordered dt-responsive nowrap"
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
