@@ -28,6 +28,8 @@ return [
         'logout' => 'Đăng xuất',
         'delete' => 'Xóa',
         'cancel' => 'Hủy bỏ',
+        'create' => 'Thêm',
+        'edit' => 'Sửa',
     ],
 
     'label' => [
@@ -61,6 +63,7 @@ return [
         ],
         'category' => [
             'title' => 'Danh mục',
+            'select_option'=> 'Thuộc danh mục',
             'name' => 'danh mục',
         ],
         'supplier' => [
@@ -104,7 +107,7 @@ return [
         'color' => "Màu",
         'size' => "Size",
         'quantity' => "Số lượng",
-        
+
     ],
 
     'placeholder' => [

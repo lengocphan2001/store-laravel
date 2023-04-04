@@ -4,12 +4,6 @@ namespace App\Helpers;
 
 class AdminHelper
 {
-    /**
-     *  Get page title
-     *
-     * @param null $title
-     * @return string|null
-     */
     public static function getPageTitle($title = null): ?string
     {
         if (!$title) {
