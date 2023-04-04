@@ -84,8 +84,11 @@ return [
             'name' => 'Tên khách hàng',
         ],
         'contact' => [
-            'title' => 'Phản hồi',
-            'name' => 'phản hồi',
+            'title' => 'Liên hệ phản hồi',
+            'name' => 'Liên hệ phản hồi',
+            'id' => 'ID Phản hồi',
+            'customer' => 'Khách hàng',
+            'content' => 'Nội dung'
         ],
         'status' => [
             'title' => 'Trạng thái',

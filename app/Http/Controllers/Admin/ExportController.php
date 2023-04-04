@@ -26,6 +26,6 @@ class ExportController extends Controller
      */
     public function exportOrder()
     {
-        return Excel::download(new OrderExport(), trans('admin.label.order.title').'.xlsx');
+        return Excel::download(new OrderExport(), trans('admin.label.order.title') . '.xlsx');
     }
 }
