@@ -24,21 +24,8 @@ class UpdateBannerRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:5|sometimes',
-            'link' => 'required|url'
-        ];
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
-    public function attributes(): array
-    {
-        return [
-            'title' => trans('admin.label.title'),
-            'link' => trans('admin.label.link'),
+            'title' => ['required', 'min:5', 'sometimes'],
+            'link' => ['required', 'url']
         ];
     }
 }

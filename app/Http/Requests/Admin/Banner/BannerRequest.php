@@ -27,21 +27,7 @@ class BannerRequest extends FormRequest
         return [
             'image' => ['file', 'image', 'required'],
             'title' => ['required', 'min:5', 'unique:banners,title'],
-            'link' => 'required|url'
-        ];
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
-    public function attributes(): array
-    {
-        return [
-            'image' => trans('admin.label.image'),
-            'title' => trans('admin.label.title'),
-            'link' => trans('admin.label.link'),
+            'link' => ['required', 'url']
         ];
     }
 }

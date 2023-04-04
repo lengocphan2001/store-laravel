@@ -71,12 +71,26 @@ class BannerService extends Service
 
 
     /**
+     * Edit
+     *
+     * @param $id
+     * 
+     * @return $banner
+     */
+    public function edit($id)
+    {
+        $banner = Banner::FindorFail($id);
+
+        return $banner;
+    }
+    /**
      * Create
      *
      * @param $request
      */
-    public function update($banner, $data)
+    public function update($id, $data)
     {
+        $banner = Banner::FindOrFail($id);
         if (isset($data['image'])) {
             $data['image'] = $this->uploadFile($data);
         }
@@ -95,17 +109,14 @@ class BannerService extends Service
      */
     public function delete($id)
     {
-        $banner = Banner::query()->where('id', $id)->first();
-        if (!$banner) {
-            abort(404);
-        }
+        $banner = Banner::FindorFail($id);
         DB::beginTransaction();
         try {
             $this->deleteFile($banner->image);
             $banner->delete();
+            DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
         }
-        DB::commit();
     }
 }

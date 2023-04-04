@@ -157,10 +157,13 @@ return [
         'second' => 'giây',
         'sex' => 'Giới tính',
         'size' => 'kích thước',
-        'subject' => 'tiêu đề',
+        'subject' => 'Tiêu đề',
         'time' => 'thời gian',
-        'title' => 'tiêu đề',
+        'title' => 'Tiêu đề',
         'username' => 'tên đăng nhập',
         'year' => 'năm',
+        'link' => 'Đường dẫn',
+        'image' => 'Ảnh banner'
+
     ],
 ];

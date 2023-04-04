@@ -76,9 +76,8 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        $banner = Banner::where('id', $id)->first();
-        $data['title'] = trans('admin.label.banner.title') . ' - ' . trans('admin.action.update');
-        $data['banner'] = $banner;
+        $data['title'] = AdminHelper::getPageTitle(trans('admin.label.banner.title'));
+        $data['banner'] = BannerService::getInstance()->edit($id);
 
         return view('admin.banners.edit')->with(['data' => $data]);
     }
@@ -92,8 +91,7 @@ class BannerController extends Controller
      */
     public function update(UpdateBannerRequest $request, $id)
     {
-        $banner = Banner::where('id', $id)->first();
-        BannerService::getInstance()->update($banner,  $request->only(['image', 'title', 'link', 'status']));
+        BannerService::getInstance()->update($id,  $request->only(['image', 'title', 'link', 'status']));
         toastr(trans('admin.response.update', ['name' => trans('admin.label.banner.name')]));
 
         return redirect(route('admin.banners.index'));
