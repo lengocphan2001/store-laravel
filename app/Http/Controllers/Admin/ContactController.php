@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\AdminHelper;
 use App\Http\Controllers\Controller;
 use App\Services\Admin\ContactService;
 use Illuminate\Http\Request;

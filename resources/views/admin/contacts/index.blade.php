@@ -42,9 +42,9 @@
                             <thead>
                                 <tr>
                                     <th class="text-center align-middle">{{ __('admin.label.contact.id') }}</th>
+                                    <th class="text-center align-middle">{{ __('admin.label.contact.customer') }}</th>
                                     <th class="text-center align-middle">{{ __('admin.label.phone') }}</th>
-                                    <th class="text-center align-middle">{{ __('admin.label.email') }}</th>
-                                    <th class="text-center align-middle">{{ __('admin.label.address') }}</th>
+                                    <th class="text-center align-middle">{{ __('admin.label.contact.content') }}</th>
                                 </tr>
                             </thead>
 
@@ -54,7 +54,7 @@
                                         <td class="align-middle">{{ $result->id}}</td>
                                         <td class="align-middle">{{ $result->name }}</td>
                                         <td class="align-middle">{{ $result->phone}}</td>
-                                        <td class="align-middle">{{ $result->content}}</td>
+                                        <td class="align-middle d-inline-block" style="white-space: normal">{{ $result->content}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
