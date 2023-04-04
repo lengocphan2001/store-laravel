@@ -4,6 +4,12 @@ namespace App\Helpers;
 
 class DataHelper
 {
+    /**
+     *  Data tree category
+     *
+     * @param array $parent
+     * @return array
+     */
     public static function dataTree($array, $parent, $check = 0, $level = 0)
     {
         $data = '';
