@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\ExportController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SizeController;
 use Illuminate\Support\Facades\Route;
@@ -45,9 +46,12 @@ Route::middleware('auth:admin')->group(function () {
     Route::resource('colors', ColorController::class);
     Route::resource('sizes', SizeController::class);
     Route::resource('products', ProductController::class);
-    Route::resource('orders', OrderController::class)->only(['index', 'show','destroy']);
-    Route::resource('contacts', ContactController::class)->only(['index', 'show','destroy']);
-    Route::resource('customers', CustomerController::class)->only(['index', 'show','destroy']);
+    Route::resource('orders', OrderController::class)->only(['index', 'show', 'destroy']);
+    Route::resource('contacts', ContactController::class)->only(['index', 'show', 'destroy']);
+    Route::resource('customers', CustomerController::class)->only(['index', 'show', 'destroy']);
+    Route::group(['prefix' => 'export', 'as' => 'export.'], function () {
+        Route::get('customers', [ExportController::class, 'exportCustomer'])->name('customers');
+    });
     Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
         Route::post('/uploadFile', [ProductController::class, 'uploadFile'])->name('uploadFile');
         Route::put('/{product}/toggle-status', [ProductController::class, 'toggle'])->name('toggle');

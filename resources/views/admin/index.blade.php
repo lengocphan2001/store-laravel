@@ -58,7 +58,6 @@
                                                         <p class="text-muted font-weight-medium">{{ trans('admin.label.revenue') }}</p>
                                                         <h4 class="mb-0">$35, 723</h4>
                                                     </div>
-                    
                                                     <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
                                                         <span class="avatar-title rounded-circle bg-primary">
                                                             <i class="bx bx-archive-in font-size-24"></i>
@@ -76,7 +75,6 @@
                                                         <p class="text-muted font-weight-medium">{{ trans('admin.label.totalUser') }}</p>
                                                         <h4 class="mb-0">$16.2</h4>
                                                     </div>
-                    
                                                     <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
                                                         <span class="avatar-title rounded-circle bg-primary">
                                                             <i class="bx bx-user font-size-24"></i>
