@@ -15,6 +15,6 @@ class ExportController extends Controller
      */
     public function exportCustomer()
     {
-        return Excel::download(new CustomerExport(), trans('admin.label.customer.title').'.xlsx');
+        return Excel::download(new CustomerExport(), trans('admin.label.customer.title') . '.xlsx');
     }
 }
