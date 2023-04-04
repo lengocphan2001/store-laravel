@@ -54,6 +54,7 @@ return [
         'banner' => [
             'title' => 'Banner',
             'name' => 'banner',
+            'link' => 'link'
         ],
         'product' => [
             'title' => 'Sản phẩm',
@@ -104,7 +105,7 @@ return [
         'color' => "Màu",
         'size' => "Size",
         'quantity' => "Số lượng",
-        'link' => 'Đường dẫn'
+        'link' => 'Đường dẫn',
 
     ],
 

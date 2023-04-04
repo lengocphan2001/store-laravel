@@ -75,6 +75,21 @@
                                                 placeholder="{{ __('admin.placeholder.banner.title') }}" name="link"
                                                 value="{{ $data['banner']->link }}">
                                         </div>
+                                        @if ($errors->has('link'))
+                                            <div class='text-danger mt-2'>
+                                                * {{ $errors->first('link') }}
+                                            </div>
+                                        @endif
+                                        <label class="control-label col-sm-2" for="subject">
+                                            <h6>Trạng thái <span class="required">*</span></h6>
+                                        </label>
+                                        <div class="container">
+                                            <label class="switch" for="checkbox">
+                                                <input type="checkbox" id="checkbox" name="status"
+                                                    {{ $data['banner']->status == Banner::STATUS_ACTIVE ? 'checked' : '' }} />
+                                                <div class="slider round"></div>
+                                            </label>
+                                        </div>
                                         <!-- Error -->
                                     </div>
                                 </div>

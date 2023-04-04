@@ -52,7 +52,6 @@ class BannerController extends Controller
     {
         BannerService::getInstance()->create($request->only(['image', 'title', 'link']));
         $data['title'] = AdminHelper::getPageTitle(trans('admin.label.banner.title'));
-        $data['banners'] = BannerService::getInstance()->getListBanners();
         toastr(trans('admin.response.create', ['name' => trans('admin.label.banner.name')]));
 
         return redirect(route('admin.banners.index'))->with(['data', $data]);
@@ -94,7 +93,7 @@ class BannerController extends Controller
     public function update(UpdateBannerRequest $request, $id)
     {
         $banner = Banner::where('id', $id)->first();
-        BannerService::getInstance()->update($banner,  $request->only(['image', 'title', 'link']));
+        BannerService::getInstance()->update($banner,  $request->only(['image', 'title', 'link', 'status']));
         toastr(trans('admin.response.update', ['name' => trans('admin.label.banner.name')]));
 
         return redirect(route('admin.banners.index'));

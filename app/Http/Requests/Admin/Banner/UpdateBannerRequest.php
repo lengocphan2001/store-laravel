@@ -24,7 +24,7 @@ class UpdateBannerRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'min:5', 'unique:banners,title,' . $this->title . ',title'],
+            'title' => 'required|min:5|sometimes',
             'link' => 'required|url'
         ];
     }
@@ -37,8 +37,8 @@ class UpdateBannerRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'title' => trans('admin.label.banner.title_name'),
-            'link' => trans('admin.label.banner.link'),
+            'title' => trans('admin.label.title'),
+            'link' => trans('admin.label.link'),
         ];
     }
 }
