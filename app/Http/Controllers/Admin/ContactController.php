@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\AdminHelper;
 use App\Http\Controllers\Controller;
+use App\Services\Admin\ContactService;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -14,7 +16,10 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $data['title'] = AdminHelper::getPageTitle(trans('admin.label.contact.title'));
+        $data['contacts'] = ContactService::getInstance()->getListContacts();
+
+        return view('admin.contacts.index')->with(['data' => $data]);
     }
 
     /**

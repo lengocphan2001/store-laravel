@@ -19,7 +19,9 @@ return [
         'detail' => 'Chi tiết',
         'list' => 'Danh sách',
         'delete' => 'Xóa',
-        'cancel' => 'Hủy'
+        'cancel' => 'Hủy',
+        'export' => 'Xuất Excell',
+
 
     ],
 
@@ -85,8 +87,11 @@ return [
             'name' => 'Tên khách hàng',
         ],
         'contact' => [
-            'title' => 'Phản hồi',
-            'name' => 'phản hồi',
+            'title' => 'Liên hệ phản hồi',
+            'name' => 'Liên hệ phản hồi',
+            'id' => 'ID Phản hồi',
+            'customer' => 'Khách hàng',
+            'content' => 'Nội dung'
         ],
         'status' => [
             'title' => 'Trạng thái',
@@ -99,7 +104,7 @@ return [
         'total' => 'Tổng tiền',
         'payment' => 'Phương thức thanh toán',
         'detail'=> 'Chi tiết',
-        'phone' => 'Số địa thoại',
+        'phone' => 'Số điện thoại',
         'address' => 'Địa chỉ',
         'image' => 'Hình ảnh',
         'title' => 'Tiêu đề',
