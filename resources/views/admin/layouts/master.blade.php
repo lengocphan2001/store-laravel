@@ -19,9 +19,7 @@
                     <ul class="metismenu list-unstyled" id="side-menu">
                         @foreach(AdminHelper::getAdminSidebar() as $menu)
                             <li>
-                                <a href="{{ (!isset($menu['items']) && !empty($menu['route'])) ? route("admin.{$menu['route']}") : 'javascript:void(0);' }}"
-                                   class="{{ isset($menu['items']) ? 'has-arrow' : '' }} waves-effect">
-                                    <i class="bx {{ $menu['icon'] }}"></i>
+                                <a href="{{ (!isset($menu['items']) && !empty($menu['route'])) ? route("admin.{$menu['route']}") : 'javascript:void(0);' }}">
                                     <span>{{ $menu['label'] }}</span>
                                 </a>
                                 @if(isset($menu['items']))
@@ -79,7 +77,6 @@
                 </div>
             </div>
             <!-- end modal -->
-
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="row">
