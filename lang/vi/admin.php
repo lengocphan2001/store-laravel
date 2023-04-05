@@ -34,6 +34,10 @@ return [
         'edit' => 'Sửa',
     ],
 
+    'select_option' => [
+        'category' => '--Danh mục--',
+    ],
+
     'label' => [
         'email' => 'Email',
         'password' => 'Mật khẩu',
@@ -65,7 +69,7 @@ return [
         ],
         'category' => [
             'title' => 'Danh mục',
-            'select_option'=> 'Thuộc danh mục',
+            'select_option' => 'Thuộc danh mục',
             'name' => 'danh mục',
         ],
         'supplier' => [
@@ -103,7 +107,7 @@ return [
         'totalUser' => 'Tổng số người dùng',
         'total' => 'Tổng tiền',
         'payment' => 'Phương thức thanh toán',
-        'detail'=> 'Chi tiết',
+        'detail' => 'Chi tiết',
         'phone' => 'Số điện thoại',
         'address' => 'Địa chỉ',
         'image' => 'Hình ảnh',
@@ -112,6 +116,7 @@ return [
         'color' => "Màu",
         'size' => "Size",
         'quantity' => "Số lượng",
+        'parent_category' => 'Danh mục cha'
 
     ],
 

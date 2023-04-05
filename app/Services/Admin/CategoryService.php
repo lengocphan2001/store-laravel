@@ -22,6 +22,19 @@ class CategoryService extends Service
     }
 
     /**
+     * Get List Category in select option
+     *
+     * @return Builder[]|Collection
+     */
+    public function getCategoryOptionEdit($id): Collection|array
+    {
+        return Category::query()
+            ->select(['id', 'name',  'status', 'parent_id'])
+            ->where('id', '!=', $id)
+            ->get()->toArray();
+    }
+
+    /**
      * Get List Category
      *
      * @return Builder[]|Collection
@@ -30,8 +43,8 @@ class CategoryService extends Service
     {
         return Category::query()
             ->select(['id', 'name',  'status', 'parent_id'])
-            ->whereNull('parent_id')
-            ->get();
+            ->with('parent')
+            ->get()->toArray();
     }
 
 
@@ -42,10 +55,7 @@ class CategoryService extends Service
      */
     public function store($name, $parent_id)
     {
-        $category = new Category;
-        $category->name = $name;
-        $category->parent_id = $parent_id;
-        $category->save();
+        Category::query()->create(['name' => $name, 'parent_id' => $parent_id]);
     }
 
     /**
@@ -92,7 +102,7 @@ class CategoryService extends Service
     public function edit($id)
     {
         $category = Category::query()
-            ->select(['id', 'name'])
+            ->select(['id', 'name', 'parent_id'])
             ->where('id', $id)
             ->first();
         if (!$category) {
@@ -113,11 +123,7 @@ class CategoryService extends Service
         if (!$category) {
             abort(404);
         } //end if
-        $category->name = $name;
-        $category->parent_id = $parent_id;
-        $category->save();
-
-        return $category;
+        $category->update(['name' => $name, 'parent_id' => $parent_id]);
     }
     /**
      * Delete

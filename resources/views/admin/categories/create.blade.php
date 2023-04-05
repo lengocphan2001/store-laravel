@@ -1,6 +1,6 @@
 @php use App\Models\Category;
-use App\Helpers\DataHelper;
- @endphp
+    use App\Helpers\DataHelper;
+@endphp
 @extends('admin.layouts.master')
 @section('admin_head')
     <title>{{ $data['title'] }}</title>
@@ -57,7 +57,7 @@ use App\Helpers\DataHelper;
                                     class="col-sm-3 col-form-label">{{ __('admin.label.category.select_option') }}</label>
                                 <div class="col-sm-9">
                                     <select name="parent_id" id="category_id" class="form-control">
-                                        <option value="">-- Danh mục --</option>
+                                        <option value="">{{ __('admin.select_option.category') }}</option>
                                         {!! DataHelper::dataTree($data['categories_option'], 0, intval(old('cat_id'))) !!}
                                     </select>
                                 </div>

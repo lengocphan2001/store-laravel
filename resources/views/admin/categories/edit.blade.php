@@ -58,8 +58,13 @@ use App\Helpers\DataHelper; @endphp
                                     class="col-sm-3 col-form-label">{{ __('admin.label.category.select_option') }}</label>
                                 <div class="col-sm-9">
                                     <select name="parent_id" id="category_id" class="form-control">
-                                        <option value="">-- Danh mục --</option>
-                                        {!! DataHelper::dataTree($data['categories_option'], 0, intval(old('cat_id'))) !!}
+                                        @if (!$data['category']['parent'])
+                                            <option value="">{{ __('admin.select_option.category') }}</option>
+                                        @else
+                                            <option value="{{ $data['category']['parent']->id }}">
+                                                {{ $data['category']['parent']->name }}</option>
+                                        @endif
+                                        {!! DataHelper::dataTree($data['categories_option'], 0, $data['category']->id, intval(old('cat_id'))) !!}
                                     </select>
                                 </div>
                             </div>

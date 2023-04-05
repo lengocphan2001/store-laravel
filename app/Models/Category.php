@@ -19,7 +19,7 @@ class Category extends Model
     protected $fillable = [
         'name',
         'slug',
-        'parent_id ',
+        'parent_id',
         'status',
     ];
 
@@ -32,13 +32,23 @@ class Category extends Model
         ];
     }
 
-    public function children()
-    {
-        return $this->hasMany(Category::class, 'parent_id');
-    }
-
+    /**
+     * Get the parent that owns the Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');
+    }
+
+    /**
+     * Get all of the parent for the Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
     }
 }

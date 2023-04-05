@@ -24,6 +24,7 @@ class DataHelper
                 }
             }
         }
+
         return $data;
     }
 }

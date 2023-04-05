@@ -38,8 +38,9 @@ class CategoryController extends Controller
     public function create()
     {
         $data['title'] = AdminHelper::getPageTitle(trans('admin.label.category.title'));
-        $data['categories'] = CategoryService::getInstance()->getListCategories()->toArray();
+        $data['categories'] = CategoryService::getInstance()->getListCategories();
         $data['categories_option'] = CategoryService::getInstance()->getCategoryOption();
+
         return view('admin.categories.create')->with(['data' => $data]);
     }
 
@@ -67,11 +68,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $data['title'] = AdminHelper::getPageTitle(trans('admin.label.category.title'));
-        $data['category_parent'] = CategoryService::getInstance()->nameCategoryParent($id);
-        $data['categories'] = CategoryService::getInstance()->show($id);
-
-        return view('admin.categories.show')->with(['data' => $data]);
+        //
     }
 
     /**
@@ -85,7 +82,7 @@ class CategoryController extends Controller
     {
         $data['title'] = AdminHelper::getPageTitle(trans('admin.label.category.title'));
         $data['category'] = CategoryService::getInstance()->edit($id);
-        $data['categories_option'] = CategoryService::getInstance()->getCategoryOption();
+        $data['categories_option'] = CategoryService::getInstance()->getCategoryOptionEdit($id);
 
         return view('admin.categories.edit')->with(['data' => $data]);
     }

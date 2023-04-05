@@ -45,6 +45,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-center align-middle">{{ __('admin.label.title') }}</th>
+                                    <th class="text-center align-middle">{{ __('admin.label.parent_category') }}</th>
                                     <th class="text-center align-middle">{{ __('admin.label.status.title') }}</th>
                                     <th class="text-center align-middle">{{ __('admin.label.action') }}</th>
                                 </tr>
@@ -58,6 +59,14 @@
                                                 {{ $result['name'] }}
                                             </a>
                                         </td>
+                                        @if (!$result['parent'])
+                                            <td class="align-middle">
+                                            </td>
+                                        @else
+                                            <td class="align-middle">
+                                                {{$result['parent']['name']}}
+                                            </td>
+                                        @endif
                                         <td class="text-center align-middle">
                                             @if ($result['status'] == Category::STATUS_ACTIVE)
                                                 <span class='badge badge-pill badge-soft-success font-size-11'
