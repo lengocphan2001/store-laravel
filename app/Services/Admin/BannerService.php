@@ -79,7 +79,10 @@ class BannerService extends Service
      */
     public function edit($id)
     {
-        $banner = Banner::FindorFail($id);
+        $banner = Banner::where('id', $id)->first();
+        if (!$banner) {
+            abort(404);
+        }
 
         return $banner;
     }
@@ -90,10 +93,15 @@ class BannerService extends Service
      */
     public function update($id, $data)
     {
-        $banner = Banner::FindOrFail($id);
+        $banner = Banner::where('id', $id)->first();
+        if (!$banner) {
+            abort(404);
+        }
+
         if (isset($data['image'])) {
             $data['image'] = $this->uploadFile($data);
         }
+
         $banner->update([
             'image' => isset($data['image']) ? $data['image'] : $banner['image'],
             'title' => $data['title'],
@@ -109,7 +117,11 @@ class BannerService extends Service
      */
     public function delete($id)
     {
-        $banner = Banner::FindorFail($id);
+        $banner = Banner::where('id', $id)->first();
+        if (!$banner) {
+            abort(404);
+        }
+
         DB::beginTransaction();
         try {
             $this->deleteFile($banner->image);
