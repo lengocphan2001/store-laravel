@@ -5,6 +5,7 @@ return [
         'email' => 50,
         'password' => 32,
         'phone' => 11,
+        'address' => 50
     ],
     'min' => [
         'phone' => 10,

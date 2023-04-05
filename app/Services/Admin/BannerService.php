@@ -2,7 +2,6 @@
 
 namespace App\Services\Admin;
 
-use App\Helpers\FileHelper;
 use App\Models\Banner;
 use App\Services\Service;
 use Illuminate\Database\Eloquent\Builder;
@@ -10,7 +9,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
-use Illuminate\Support\Facades\Storage;
 
 class BannerService extends Service
 {
