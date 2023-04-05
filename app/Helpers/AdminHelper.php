@@ -14,7 +14,7 @@ class AdminHelper
     {
         if (!$title) {
             return config('app.name');
-        }//end if
+        } //end if
 
         return $title . ' - ' . config('app.name');
     }
