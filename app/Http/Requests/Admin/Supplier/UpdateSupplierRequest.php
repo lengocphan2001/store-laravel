@@ -24,10 +24,10 @@ class UpdateSupplierRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'min:5', 'unique:suppliers,name,' . $this->name . ',name'],
-            'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10'],
-            'email' => ['required', 'email', 'unique:suppliers,email,' . $this->email . ',email', 'max:120'],
-            'address' => ['required', 'max:120']
+            'name' => ['required', 'min:' . config('validate.min.supplier.name'), 'unique:suppliers,name,' . $this->name . ',name'],
+            'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:' . config('validate.min.phone'), 'max:' . config('validate.max.phone')],
+            'email' => ['required', 'email', 'unique:suppliers,email,' . $this->email . ',email', 'max:' . config('validate.max.email')],
+            'address' => ['required', 'max:' . config('validate.max.address')],
         ];
     }
 }
