@@ -162,7 +162,6 @@ return [
         'title' => 'Tiêu đề',
         'username' => 'tên đăng nhập',
         'year' => 'năm',
-        'link' => 'Đường dẫn',
-        'image' => 'Ảnh banner',
+        'name_category' => 'Danh mục'
     ],
 ];

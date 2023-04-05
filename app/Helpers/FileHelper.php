@@ -21,6 +21,7 @@ class FileHelper
 
         $urlParsed = parse_url($path);
         $urlParsed['path'] = trim($urlParsed['path'] ?? '', '/');
+
         return str_replace('storage/upload/', '', $urlParsed['path']);
     }
 
@@ -49,6 +50,7 @@ class FileHelper
     public static function storageImages(): Filesystem
     {
         $diskName = config('upload.disk');
+
         return Storage::disk($diskName);
     }
 }

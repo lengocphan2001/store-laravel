@@ -30,12 +30,12 @@ return [
         'logout' => 'Đăng xuất',
         'delete' => 'Xóa',
         'cancel' => 'Hủy bỏ',
-        'supplier' => [
-            'create' => 'Thêm nhà cung cấp',
-            'delete' => 'Xóa nhà cung cấp',
-            'cancel' => 'Hủy',
-            'edit' => 'Sửa nhà cung cấp'
-        ]
+        'create' => 'Thêm',
+        'edit' => 'Sửa',
+    ],
+
+    'select_option' => [
+        'category' => '--Danh mục--',
     ],
 
     'label' => [
@@ -70,6 +70,7 @@ return [
         ],
         'category' => [
             'title' => 'Danh mục',
+            'select_option' => 'Thuộc danh mục',
             'name' => 'danh mục',
         ],
         'supplier' => [
@@ -119,7 +120,7 @@ return [
         'color' => "Màu",
         'size' => "Size",
         'quantity' => "Số lượng",
-        'link' => 'Đường dẫn',
+        'parent_category' => 'Danh mục cha'
 
     ],
 

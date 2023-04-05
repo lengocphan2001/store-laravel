@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Intervention\Image\ImageManagerStatic as Image;
+
 
 class BannerService extends Service
 {
@@ -25,36 +25,7 @@ class BannerService extends Service
     }
 
 
-    /**
-     * uploadImage
-     *
-     * @param $data
-     * 
-     * @return $path
-     */
 
-    public function uploadFile($data)
-    {
-        $file = $data['image'];
-        $filename = time() . '_' . $file->getClientOriginalName();
-        Image::make($file)->encode('webp', 90)->resize(270, 250)->save(storage_path('app/public/images/banners/' . $filename . '.webp'));
-        $path = 'storage/images/banners/' . $filename . '.webp';
-
-        return $path;
-    }
-
-    /**
-     * deleteImage
-     *
-     * @param $path
-     */
-
-    public function deleteFile($path)
-    {
-        if (file_exists($path)) {
-            File::delete($path);
-        }
-    }
 
     /**
      * Create

@@ -4,8 +4,7 @@ return [
     'max' => [
         'email' => 50,
         'password' => 32,
-        'phone' => 11,
-        'address' => 50
+        'title' => 255,
     ],
     'min' => [
         'phone' => 10,
