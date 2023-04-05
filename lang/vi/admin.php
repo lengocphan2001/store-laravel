@@ -37,6 +37,12 @@ return [
             'edit' => 'Sửa banner',
             
         ],
+        'create' => 'Thêm',
+        'edit' => 'Sửa',
+    ],
+
+    'select_option' => [
+        'category' => '--Danh mục--',
     ],
 
     'label' => [
@@ -71,11 +77,15 @@ return [
         ],
         'category' => [
             'title' => 'Danh mục',
+            'select_option' => 'Thuộc danh mục',
             'name' => 'danh mục',
         ],
         'supplier' => [
             'title' => 'Nhà cung cấp',
-            'name' => 'nhà cung cấp',
+            'name' => 'Nhà cung cấp',
+            'email' => 'Email',
+            'phone' => 'Số điện thoại',
+            'address' => 'Địa chỉ'
         ],
         'order' => [
             'title' => 'Đơn hàng',
@@ -117,7 +127,8 @@ return [
         'color' => "Màu",
         'size' => "Size",
         'quantity' => "Số lượng",
-        'link' => 'Đường dẫn',
+        'parent_category' => 'Danh mục cha',
+        'link' => 'Đường dẫn'
 
     ],
 
@@ -129,6 +140,12 @@ return [
             'title' => 'Nhập tiêu đề',
             'link' => 'Nhập đường dẫn'
         ],
+        'supplier' => [
+            'name' => 'Tên nhà cung cấp',
+            'phone' => 'Số điện thoại',
+            'email' => 'Email',
+            'address' => 'Địa chỉ'
+        ]
     ],
 
     'response' => [

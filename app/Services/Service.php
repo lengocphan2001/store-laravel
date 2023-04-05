@@ -4,6 +4,9 @@ namespace App\Services;
 
 use App\Models\Admin;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 
 abstract class Service
 {

@@ -2,15 +2,13 @@
 
 namespace App\Services\Admin;
 
-use App\Helpers\FileHelper;
 use App\Models\Banner;
+use App\Services\FileService;
 use App\Services\Service;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
-use Intervention\Image\ImageManagerStatic as Image;
-use Illuminate\Support\Facades\Storage;
+
 
 class BannerService extends Service
 {
@@ -27,36 +25,7 @@ class BannerService extends Service
     }
 
 
-    /**
-     * uploadImage
-     *
-     * @param $data
-     * 
-     * @return $path
-     */
 
-    public function uploadFile($data)
-    {
-        $file = $data['image'];
-        $filename = time() . '_' . $file->getClientOriginalName();
-        Image::make($file)->encode('webp', 90)->resize(270, 250)->save(storage_path('app/public/images/banners/' . $filename . '.webp'));
-        $path = 'storage/images/banners/' . $filename . '.webp';
-
-        return $path;
-    }
-
-    /**
-     * deleteImage
-     *
-     * @param $path
-     */
-
-    public function deleteFile($path)
-    {
-        if (file_exists($path)) {
-            File::delete($path);
-        }
-    }
 
     /**
      * Create
@@ -65,7 +34,8 @@ class BannerService extends Service
      */
     public function create($data)
     {
-        $data['image'] = $this->uploadFile($data);
+        $path = trans('admin.label.banner.name');
+        $data['image'] = FileService::getInstance()->uploadFile($data, $path);
         Banner::create($data);
     }
 
@@ -93,14 +63,16 @@ class BannerService extends Service
      */
     public function update($id, $data)
     {
-        $banner = Banner::where('id', $id)->first();
+        $banner = Banner::query()->where('id', $id)->first();
         if (!$banner) {
-            abort(404);
+
+            return abort(404);
         }
 
         if (isset($data['image'])) {
-            $data['image'] = $this->uploadFile($data);
-        }
+            $path = trans('admin.label.banner.name');
+            $data['image'] = FileService::getInstance()->uploadFile($data, $path);
+        } 
 
         $banner->update([
             'image' => isset($data['image']) ? $data['image'] : $banner['image'],
@@ -120,15 +92,16 @@ class BannerService extends Service
         $banner = Banner::where('id', $id)->first();
         if (!$banner) {
             abort(404);
-        }
+
 
         DB::beginTransaction();
-        try {
-            $this->deleteFile($banner->image);
-            $banner->delete();
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollback();
+            try {
+                FileService::getInstance()->deleteFile($banner->image);
+                $banner->delete();
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollback();
+            }
         }
     }
 }

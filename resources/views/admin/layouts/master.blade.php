@@ -20,9 +20,8 @@
                         <ul class="metismenu list-unstyled" id="side-menu">
                             @foreach (AdminHelper::getAdminSidebar() as $menu)
                                 <li>
-                                    <a href="{{ !isset($menu['items']) && !empty($menu['route']) ? route("admin.{$menu['route']}") : 'javascript:void(0);' }}"
-                                        class="{{ isset($menu['items']) ? 'has-arrow' : '' }} waves-effect">
-                                        <i class="bx {{ $menu['icon'] }}"></i>
+                                    <a
+                                        href="{{ !isset($menu['items']) && !empty($menu['route']) ? route("admin.{$menu['route']}") : 'javascript:void(0);' }}">
                                         <span>{{ $menu['label'] }}</span>
                                     </a>
                                     @if (isset($menu['items']))
@@ -47,12 +46,6 @@
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
-
-            <!-- Left Sidebar End -->
-
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->
             <div class="main-content">
 
                 <div class="page-content">
@@ -62,9 +55,10 @@
                 <!-- End Page-content -->
 
                 <!-- Transaction Modal -->
-                <div class="modal fade deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+                <div class="modal fade deleteModal " tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
                     aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-top" role="document">
+                    <div class="modal-dialog modal-confirm modal-dialog-top" role="document">
+
                         <div class="modal-content">
                             <form id="deleteForm" action="" method="post">
                                 @csrf
@@ -85,10 +79,10 @@
                                 </div>
                             </form>
                         </div>
+                        <!-- Sidebar -->
                     </div>
                 </div>
                 <!-- end modal -->
-
                 <footer class="footer">
                     <div class="container-fluid">
                         <div class="row">
@@ -103,7 +97,23 @@
                             </div>
                         </div>
                     </div>
-                </footer>
+                    <!-- end modal -->
+
+                    <footer class="footer">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    Copyright {{ date('Y') }} © to <a
+                                        href="{{ route('admin.dashboard') }}"><b>{{ config('app.name') }}</b></a>.
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <div class="text-sm-end d-none d-sm-block">
+                                        {{ __('admin.label.load_page', ['second' => round(microtime(true) - LARAVEL_START, 2)]) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
             </div>
             <!-- end main content-->
 
