@@ -37,9 +37,10 @@ class FileService extends Service
 
     public function deleteFile($path)
     {
-        $path = str_replace('storage', 'storage/app/public', $path);
-        if (Storage::exists('app/public/images/banner/1680701366_337559584_220174467345334_1210152663825860683_n.jpg.webp')) {
+        $path = str_replace('storage', 'public', $path);
+        if (Storage::exists($path)) {
             Storage::delete($path);
-        } else dd("Cannot find");
+        } else 
+            return abort(404);
     }
 }

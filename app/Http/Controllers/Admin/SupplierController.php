@@ -20,6 +20,7 @@ class SupplierController extends Controller
     {
         $data['title'] = AdminHelper::getPageTitle(trans('admin.label.supplier.title'));
         $data['suppliers'] = SupplierService::getInstance()->getListSuppliers();
+        
         return view('admin.suppliers.index')->with(['data' => $data]);
     }
 
