@@ -52,9 +52,9 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $name = $request->input(['name_category']);
-        $parent_id = $request->input(['parent_id']);
-        CategoryService::getInstance()->store($name, $parent_id);
+        $data = $request->only(['name_category', 'parent_id']);
+
+        CategoryService::getInstance()->store($data);
         toastr(trans('admin.response.create', ['name' => trans('admin.label.category.name')]));
 
         return redirect()->route('admin.categories.index');
@@ -96,9 +96,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $name = $request->input(['name_category']);
-        $parent_id = $request->input(['parent_id']);
-        CategoryService::getInstance()->update($id, $name, $parent_id);
+        $data = $request->only(['name_category', 'parent_id']);
+        CategoryService::getInstance()->update($id,$data);
         toastr(trans('admin.response.update', ['name' => trans('admin.label.category.name')]));
 
         return redirect()->route('admin.categories.index');

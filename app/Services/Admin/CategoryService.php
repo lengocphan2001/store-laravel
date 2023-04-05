@@ -53,9 +53,9 @@ class CategoryService extends Service
      *
      * @param $data
      */
-    public function store($name, $parent_id)
+    public function store($data)
     {
-        Category::query()->create(['name' => $name, 'parent_id' => $parent_id]);
+        Category::query()->create(['name' => $data['name_category'], 'parent_id' => $data['parent_id']]);
     }
 
     /**
@@ -117,13 +117,13 @@ class CategoryService extends Service
      *
      * @param $id
      */
-    public function update($id, $name, $parent_id)
+    public function update($id, $data)
     {
         $category = Category::find($id);
         if (!$category) {
             abort(404);
         } //end if
-        $category->update(['name' => $name, 'parent_id' => $parent_id]);
+        $category->update(['name' => $data['name_category'], 'parent_id' => $data['parent_id']]);
     }
     /**
      * Delete
