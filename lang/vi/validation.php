@@ -163,7 +163,6 @@ return [
         'username' => 'tên đăng nhập',
         'year' => 'năm',
         'link' => 'Đường dẫn',
-        'image' => 'Ảnh banner'
-
+        'image' => 'Ảnh banner',
     ],
 ];

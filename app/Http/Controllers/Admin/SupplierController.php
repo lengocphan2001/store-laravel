@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\AdminHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Supplier\SupplierRequest;
+use App\Http\Requests\Admin\Supplier\UpdateSupplierRequest;
+use App\Services\Admin\SupplierService;
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
@@ -14,7 +18,9 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+        $data['title'] = AdminHelper::getPageTitle(trans('admin.label.supplier.title'));
+        $data['suppliers'] = SupplierService::getInstance()->getListSuppliers();
+        return view('admin.suppliers.index')->with(['data' => $data]);
     }
 
     /**
@@ -24,7 +30,9 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        $data['title'] = AdminHelper::getPageTitle(trans('admin.label.supplier.title'));
+
+        return view('admin.suppliers.create')->with(['data' => $data]);
     }
 
     /**
@@ -33,9 +41,13 @@ class SupplierController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SupplierRequest $request)
     {
-        //
+        SupplierService::getInstance()->create($request->only(['name', 'phone', 'email', 'address']));
+        $data['title'] = AdminHelper::getPageTitle(trans('admin.label.supplier.title'));
+        toastr(trans('admin.response.create', ['name' => trans('admin.label.supplier.name')]));
+
+        return redirect(route('admin.suppliers.index'))->with(['data', $data]);
     }
 
     /**
@@ -57,7 +69,11 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['title'] = AdminHelper::getPageTitle(trans('admin.label.supplier.title'));
+        $supplier = SupplierService::getInstance()->edit($id);
+        $data['supplier'] = $supplier;
+
+        return view('admin.suppliers.edit')->with(['data' => $data]);
     }
 
     /**
@@ -67,9 +83,12 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSupplierRequest $request, $id)
     {
-        //
+        SupplierService::getInstance()->update($id,  $request->only(['name', 'phone', 'email', 'address', 'status']));
+        toastr(trans('admin.response.update', ['name' => trans('admin.label.supplier.title')]));
+
+        return redirect(route('admin.suppliers.index'));
     }
 
     /**
@@ -80,6 +99,9 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SupplierService::getInstance()->delete($id);
+        toastr(trans('admin.response.delete', ['name' => trans('admin.label.supplier.title')]));
+
+        return redirect(route('admin.suppliers.index'));
     }
 }

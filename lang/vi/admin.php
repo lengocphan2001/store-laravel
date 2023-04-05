@@ -30,6 +30,12 @@ return [
         'logout' => 'Đăng xuất',
         'delete' => 'Xóa',
         'cancel' => 'Hủy bỏ',
+        'supplier' => [
+            'create' => 'Thêm nhà cung cấp',
+            'delete' => 'Xóa nhà cung cấp',
+            'cancel' => 'Hủy',
+            'edit' => 'Sửa nhà cung cấp'
+        ]
     ],
 
     'label' => [
@@ -68,7 +74,10 @@ return [
         ],
         'supplier' => [
             'title' => 'Nhà cung cấp',
-            'name' => 'nhà cung cấp',
+            'name' => 'Nhà cung cấp',
+            'email' => 'Email',
+            'phone' => 'Số điện thoại',
+            'address' => 'Địa chỉ'
         ],
         'order' => [
             'title' => 'Đơn hàng',
@@ -122,6 +131,12 @@ return [
             'title' => 'Nhập tiêu đề',
             'link' => 'Nhập đường dẫn'
         ],
+        'supplier' => [
+            'name' => 'Tên nhà cung cấp',
+            'phone' => 'Số điện thoại',
+            'email' => 'Email',
+            'address' => 'Địa chỉ'
+        ]
     ],
 
     'response' => [
