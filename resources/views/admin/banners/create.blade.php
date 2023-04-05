@@ -3,6 +3,7 @@
 @section('admin_head')
     <title>{{ $data['title'] }}</title>
     <meta content="{{ $data['title'] }}" name="description" />
+    <link rel="stylesheet" href="{{ asset('admin-assets\css\banner\banner.css') }}">
 @endsection
 
 @section('admin_style')

@@ -120,7 +120,8 @@ return [
         'color' => "Màu",
         'size' => "Size",
         'quantity' => "Số lượng",
-        'parent_category' => 'Danh mục cha'
+        'parent_category' => 'Danh mục cha',
+        'link' => 'Đường dẫn'
 
     ],
 

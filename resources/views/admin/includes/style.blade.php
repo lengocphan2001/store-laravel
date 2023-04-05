@@ -1,4 +1,3 @@
-
 @yield('admin_style')
 
 <!-- Bootstrap Css -->

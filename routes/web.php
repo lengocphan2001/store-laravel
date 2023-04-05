@@ -29,11 +29,13 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
     Route::post('/register', [PasswordController::class, 'register'])->name('register');
     Route::get('/forgotpassword', [PasswordController::class, 'formForgotpassword'])->name('formForgotpassword');
     Route::post('/forgotpassword', [PasswordController::class, 'forgotpassword'])->name('forgotpassword');
+    Route::get('/', [HomeController::class, 'home'])->name('home');
     Route::get('/categories/{category:slug}', [HomeController::class, 'category'])->name('categories.index');
     Route::get('/products', [HomeController::class, 'postList'])->name('products.index');
     Route::get('/product-detail/{product:slug}', [HomeController::class, 'detail'])->name('product.detail');
     Route::get('/products/search', [HomeController::class, 'searchProducts'])->name('searchProducts');
     Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+    Route::get('/about', [HomeController::class, 'about'])->name('about');
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/change-password', [PasswordController::class, 'formChangePassword'])->name('formChangePassword');
         Route::post('/change-password', [PasswordController::class, 'changePassword'])->name('changePassword');

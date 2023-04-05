@@ -3,11 +3,11 @@
 namespace App\Services\Admin;
 
 use App\Models\Banner;
+use App\Services\FileService;
 use App\Services\Service;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
 
 
 class BannerService extends Service
@@ -34,7 +34,8 @@ class BannerService extends Service
      */
     public function create($data)
     {
-        $data['image'] = $this->uploadFile($data);
+        $path = trans('admin.label.banner.name');
+        $data['image'] = FileService::getInstance()->uploadFile($data, $path);
         Banner::create($data);
     }
 
@@ -69,7 +70,8 @@ class BannerService extends Service
         }
 
         if (isset($data['image'])) {
-            $data['image'] = $this->uploadFile($data);
+            $path = trans('admin.label.banner.name');
+            $data['image'] = FileService::getInstance()->uploadFile($data, $path);
         }
 
         $banner->update([
@@ -95,7 +97,7 @@ class BannerService extends Service
 
         DB::beginTransaction();
         try {
-            $this->deleteFile($banner->image);
+            FileService::getInstance()->deleteFile($banner->image);
             $banner->delete();
             DB::commit();
         } catch (\Exception $e) {
