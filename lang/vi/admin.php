@@ -30,6 +30,13 @@ return [
         'logout' => 'Đăng xuất',
         'delete' => 'Xóa',
         'cancel' => 'Hủy bỏ',
+        'banner' => [
+            'upload_image' => 'Tải ảnh lên',
+            'select' => 'Chọn ảnh',
+            'create' => 'Tạo banner',
+            'edit' => 'Sửa banner',
+            
+        ],
     ],
 
     'label' => [

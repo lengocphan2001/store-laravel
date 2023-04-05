@@ -55,7 +55,7 @@
                                 <div class="type-blog">
                                     <div class="form-group mb-4">
                                         <label class="control-label col-sm-2" for="subject">
-                                            <h6>Tiêu đề <span class="required">*</span></h6>
+                                            <h6>{{__('admin.label.title')}}<span class="required">*</span></h6>
                                         </label>
                                         <div class="title">
                                             <input type="text" class="form-control" id="name"
@@ -68,7 +68,7 @@
                                             </div>
                                         @endif
                                         <label class="control-label col-sm-2" for="subject">
-                                            <h6>Link <span class="required">*</span></h6>
+                                            <h6>{{__('admin.label.link')}} <span class="required">*</span></h6>
                                         </label>
                                         <div class="title">
                                             <input type="text" class="form-control" id="name"
@@ -81,7 +81,7 @@
                                             </div>
                                         @endif
                                         <label class="control-label col-sm-2" for="subject">
-                                            <h6>Trạng thái <span class="required">*</span></h6>
+                                            <h6>{{__('admin.label.status.title')}}<span class="required">*</span></h6>
                                         </label>
                                         <div class="container">
                                             <label class="switch" for="checkbox">
@@ -97,7 +97,7 @@
                             </div>
                             <div class="form-group ">
                                 <div class="col-sm-offset-2 btn-submit">
-                                    <button type="submit" class="btn btn-primary">Sửa banner</button>
+                                    <button type="submit" class="btn btn-primary">{{__('admin.button.banner.edit')}}</button>
                                 </div>
                             </div>
                         </form>

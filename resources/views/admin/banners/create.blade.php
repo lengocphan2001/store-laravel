@@ -37,11 +37,9 @@
                                     <input type="file" name="image" id="file" hidden>
                                     <div class="img-area">
                                         <i class='bx bxs-cloud-upload icon'></i>
-                                        <h3>Tải ảnh lên</h3>
-                                        <p>Dung lượng của ảnh không vượt quá <span>2MB</span></p>
+                                        <h3>{{__('admin.button.banner.upload_image')}}</h3>
                                     </div>
-                                    <button class="select-image btn btn-primary" type="button">Chọn
-                                        banner</button>
+                                    <button class="select-image btn btn-primary" type="button">{{__('admin.button.banner.select')}}</button>
                                     <!-- Error -->
                                     @if ($errors->has('image'))
                                         <div class='text-danger mt-2'>
@@ -52,7 +50,7 @@
                                 <div class="type-blog">
                                     <div class="form-group mb-4">
                                         <label class="control-label col-sm-2" for="subject">
-                                            <h6>Tiêu đề <span class="required">*</span></h6>
+                                            <h6>{{__('admin.label.title')}} <span class="required">*</span></h6>
                                         </label>
                                         <div class="title">
                                             <input type="text" class="form-control" id="name"
@@ -82,7 +80,7 @@
                             </div>
                             <div class="form-group ">
                                 <div class="col-sm-offset-2 btn-submit">
-                                    <button type="submit" class="btn btn-primary">Tạo banner</button>
+                                    <button type="submit" class="btn btn-primary">{{__('admin.button.banner.create')}}</button>
                                 </div>
                             </div>
                         </form>
