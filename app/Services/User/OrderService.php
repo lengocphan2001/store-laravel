@@ -23,7 +23,7 @@ class OrderService extends Service
             ->get();
     }
 
-    public function getOrderDetail($id)
+    public function getOrderDetail()
     {
         $order = Order::query()
         ->with(['orderDetails','orderDetails.productVariation.product','orderDetails.productVariation.size','orderDetails.productVariation.color'])
