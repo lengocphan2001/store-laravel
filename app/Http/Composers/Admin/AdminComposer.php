@@ -27,7 +27,9 @@ class AdminComposer
     public function compose(View $view)
     {
         $user = $this->admin;
-        $user['avatar'] = FileHelper::getFullUrl($user['avatar']);
+        // $user['avatar'] = FileHelper::getFullUrl($user['avatar']);
+
         $view->with('adminLogin', $user);
     }
+
 }
