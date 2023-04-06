@@ -1,9 +1,8 @@
-@php use App\Models\Banner; @endphp
+@php use App\Models\Supplier; @endphp
 @extends('admin.layouts.master')
 @section('admin_head')
     <title>{{ $data['title'] }}</title>
     <meta content="{{ $data['title'] }}" name="description" />
-    <link rel="stylesheet" href="{{ asset('admin-assets\css\banner\banner.css') }}">
 @endsection
 
 @section('admin_style')
@@ -21,7 +20,7 @@
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><span><i
                                             class="bx bxs-home-circle"></i> {{ __('admin.sidebar.dashboard') }}</span></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ __('admin.sidebar.banner') }}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('admin.sidebar.supplier') }}</li>
                         </ol>
                     </div>
                 </div>
@@ -34,9 +33,9 @@
                     <div class="card-body">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
                             <div class="page-title-right">
-                                <h4 class="card-title">{{ __('admin.sidebar.banner') }}</h4>
+                                <h4 class="card-title">{{ __('admin.sidebar.supplier') }}</h4>
                             </div>
-                            <a class="btn btn-primary" href="{{ route('admin.banners.create') }}">
+                            <a class="btn btn-primary" href="{{ route('admin.suppliers.create') }}">
                                 <i class="mdi mdi-plus me-2"></i> {{ __('admin.action.create') }}
                             </a>
                         </div>
@@ -44,32 +43,32 @@
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th class="text-center align-middle">{{ __('admin.label.image') }}</th>
-                                    <th class="text-center align-middle">{{ __('admin.label.title') }}</th>
-                                    <th class="text-center align-middle">{{ __('admin.label.link') }}</th>
+                                    <th class="text-center align-middle">{{ __('admin.label.supplier.name') }}</th>
+                                    <th class="text-center align-middle">{{ __('admin.label.phone') }}</th>
+                                    <th class="text-center align-middle">{{ __('admin.label.email') }}</th>
+                                    <th class="text-center align-middle">{{ __('admin.label.address') }}</th>
                                     <th class="text-center align-middle">{{ __('admin.label.status.title') }}</th>
                                     <th class="text-center align-middle">{{ __('admin.label.action') }}</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @foreach ($data['banners'] as $result)
+                                @foreach ($data['suppliers'] as $result)
                                     <tr>
-                                        <td><img class="image-list-product" src="{{ asset($result['image']) }}"
-                                                alt="Ảnh lỗi">
+                                        <td class="align-middle">
+                                            {{ $result['name'] }}
                                         </td>
                                         <td class="align-middle">
-                                            <a href="{{ route('admin.banners.edit', ['banner' => $result['id']]) }}">
-                                                {{ $result['title'] }}
-                                            </a>
+                                            {{ $result['phone'] }}
                                         </td>
                                         <td class="align-middle">
-                                            <a href="{{ $result['link'] }}">
-                                                {{ $result['link'] }}
-                                            </a>
+                                            {{ $result['email'] }}
+                                        </td>
+                                        <td class="align-middle">
+                                            {{ $result['address'] }}
                                         </td>
                                         <td class="text-center align-middle">
-                                            @if ($result['status'] == Banner::STATUS_ACTIVE)
+                                            @if ($result['status'] == Supplier::STATUS_ACTIVE)
                                                 <span class='badge badge-pill badge-soft-success font-size-11'
                                                     style='line-height: unset!important;'>{{ __('admin.label.status.active') }}</span>
                                             @else
@@ -78,12 +77,12 @@
                                             @endif
                                         </td>
                                         <td class="text-center align-middle">
-                                            <a href="{{ route('admin.banners.edit', ['banner' => $result['id']]) }}"
+                                            <a href="{{ route('admin.suppliers.edit', ['supplier' => $result['id']]) }}"
                                                 class="btn btn-primary mr-3" style="margin-right: 10px;"><i
                                                     class="bx bx-pencil"></i></a>
                                             <a href="javascript:void(0)" data-id="{{ $result['id'] }}" data-toggle="modal"
                                                 data-message="{{ __('admin.label.confirm_delete') }}"
-                                                data-url="{{ route('admin.banners.destroy', ['banner' => $result['id']]) }}"
+                                                data-url="{{ route('admin.suppliers.destroy', ['supplier' => $result['id']]) }}"
                                                 class="btn btn-danger delete" data-bs-toggle="modal"
                                                 data-bs-target=".deleteModal">
                                                 <i class="bx bx-trash"></i>
