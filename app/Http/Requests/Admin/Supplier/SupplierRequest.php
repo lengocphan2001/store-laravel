@@ -24,10 +24,10 @@ class SupplierRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'min:' . config('validate.min.supplier.name'), 'unique:suppliers,name'],
-            'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:' . config('validate.min.phone')],
-            'email' => ['required', 'email', 'unique:suppliers,email', 'max:' . config('validate.max.email')],
-            'address' => ['required', 'max:' . config('validate.min.address')]
+            'name' => ['required', 'string', 'min:' . config('validate.min.supplier.name'), 'unique:suppliers,name'],
+            'phone' => ['required', 'string', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:' . config('validate.min.phone')],
+            'email' => ['required', 'string', 'email', 'unique:suppliers,email', 'max:' . config('validate.max.email')],
+            'address' => ['required', 'string', 'max:' . config('validate.min.address')]
         ];
     }
 }

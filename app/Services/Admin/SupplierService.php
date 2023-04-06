@@ -45,6 +45,7 @@ class SupplierService extends Service
     {
         $supplier = Supplier::query()->where('id', $id)->first();
         if (!$supplier) {
+
             abort(404);
         }
 

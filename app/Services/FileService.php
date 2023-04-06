@@ -40,7 +40,8 @@ class FileService extends Service
         $path = str_replace('storage', 'public', $path);
         if (Storage::exists($path)) {
             Storage::delete($path);
-        } else 
+        } else {
             return abort(404);
+        }
     }
 }

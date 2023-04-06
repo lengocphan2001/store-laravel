@@ -25,7 +25,7 @@ class UpdateBannerRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'min:5', 'sometimes'],
-            'link' => ['required', 'url']
+            'link' => ['required', 'string', 'url']
         ];
     }
 }
