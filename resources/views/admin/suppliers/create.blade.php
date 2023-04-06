@@ -94,7 +94,7 @@
                             <div class="form-group ">
                                 <div class="col-sm-offset-2 btn-submit">
                                     <button type="submit"
-                                        class="btn btn-primary">{{ __('admin.button.supplier.create') }}</button>
+                                        class="btn btn-primary">{{ __('admin.button.create') }}</button>
                                 </div>
                             </div>
                         </form>
