@@ -19,7 +19,9 @@
                     <ul class="metismenu list-unstyled" id="side-menu">
                         @foreach(AdminHelper::getAdminSidebar() as $menu)
                             <li>
+                                
                                 <a href="{{ (!isset($menu['items']) && !empty($menu['route'])) ? route("admin.{$menu['route']}") : 'javascript:void(0);' }}">
+                                    <i class="{{$menu['icon']}}"></i>
                                     <span>{{ $menu['label'] }}</span>
                                 </a>
                                 @if(isset($menu['items']))
