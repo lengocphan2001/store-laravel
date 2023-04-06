@@ -14,12 +14,12 @@ class OrderService extends Service
      *
      * @return Builder[]|Collection
      */
-    public function getListOrders($id): Collection|array
+    public function getListOrders(): Collection|array
     {
         return Order::query()
-            ->with(['user', 'user.userAddress.ward', 'user.userAddress.district', 'user.userAddress.province'])
-            ->select(['id', 'user_id', 'payment', 'total','status'])
-            ->where('user_id', $id)
-            ->get();
+        ->with(['user', 'user.userAddress.ward', 'user.userAddress.district', 'user.userAddress.province'])
+        ->select(['id', 'user_id', 'payment', 'total','status'])
+        ->where('user_id', $this->getUser()->id)
+        ->get();
     }
 }

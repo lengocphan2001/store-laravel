@@ -39,7 +39,7 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/change-password', [PasswordController::class, 'formChangePassword'])->name('formChangePassword');
         Route::post('/change-password', [PasswordController::class, 'changePassword'])->name('changePassword');
-        Route::get('/detail-customer', [AuthController::class, 'detail'])->name('detail');
+        Route::get('/dashboard', [AuthController::class, 'detail'])->name('detail');
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::get('/order', [OrderController::class, 'index'])->name('oderProduct');
         Route::get('/cart', [CartController::class, 'index'])->name('cartProduct');

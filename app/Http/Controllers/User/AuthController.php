@@ -19,7 +19,7 @@ class AuthController extends Controller
     public function detail ()
     {
         $data['title'] = UserHelper::getPageTitle(trans('user.detail.account'));
-        $data['orders'] = OrderService::getInstance()->getListOrders(auth()->guard('web')->id());
+        $data['orders'] = OrderService::getInstance()->withUser(auth()->user())->getListOrders();
 
         return view('user.info.index')->with(['data' => $data]);
     }
