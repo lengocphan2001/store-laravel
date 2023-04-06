@@ -29,7 +29,7 @@ class AdminHelper
         return [
             [
                 'label' => trans('admin.sidebar.dashboard'),
-                'icon' => 'bx-home-circle',
+                'icon' => 'bx bx-home-circle',
                 'route' => 'dashboard',
             ],
             [
@@ -76,7 +76,7 @@ class AdminHelper
             ],
             [
                 'label' => trans('admin.sidebar.banner'),
-                'icon' => 'bx-rocket',
+                'icon' => 'bx bx-rocket',
                 'items' => [
                     [
                         'label' => trans('admin.action.list'),
