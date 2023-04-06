@@ -21,8 +21,10 @@ class AuthController extends Controller
     {
         if (auth()->guard('admin')->check()) {
             return redirect()->route('admin.dashboard');
-        } //end if
+        }//end if
+
         $data['title'] = AdminHelper::getPageTitle(trans('admin.button.login'));
+
         return view('admin.auth.login')->with(['data' => $data]);
     }
 
@@ -38,7 +40,7 @@ class AuthController extends Controller
         if (!auth()->guard('admin')->attempt($credentials)) {
             toastr(trans('auth.failed'), 'error');
             return redirect()->back()->withInput();
-        } //end if
+        }//end if
 
         return redirect()->route('admin.dashboard');
     }
@@ -64,6 +66,7 @@ class AuthController extends Controller
     {
         $data['user'] = auth()->guard('admin')->user();
         $data['title'] = AdminHelper::getPageTitle(trans('admin.sidebar.profile'));
+
         return view('admin.auth.profile')->with(['data' => $data]);
     }
 }
