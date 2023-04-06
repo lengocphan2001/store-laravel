@@ -34,8 +34,7 @@ class BannerService extends Service
      */
     public function create($data)
     {
-        $path = trans('admin.label.banner.name');
-        $data['image'] = FileService::getInstance()->uploadFile($data, $path);
+        $data['image'] = FileService::getInstance()->uploadFile($data);
         Banner::create($data);
     }
 
@@ -65,13 +64,11 @@ class BannerService extends Service
     {
         $banner = Banner::query()->where('id', $id)->first();
         if (!$banner) {
-
-            return abort(404);
+            abort(404);
         }
 
         if (isset($data['image'])) {
-            $path = trans('admin.label.banner.name');
-            $data['image'] = FileService::getInstance()->uploadFile($data, $path);
+            $data['image'] = FileService::getInstance()->uploadFile($data);
         } 
 
         $banner->update([
@@ -92,16 +89,14 @@ class BannerService extends Service
         $banner = Banner::where('id', $id)->first();
         if (!$banner) {
             abort(404);
-
-
+        }
         DB::beginTransaction();
-            try {
-                FileService::getInstance()->deleteFile($banner->image);
-                $banner->delete();
-                DB::commit();
-            } catch (\Exception $e) {
-                DB::rollback();
-            }
+        try {
+            FileService::getInstance()->deleteFile($banner->image);
+            $banner->delete();
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
         }
     }
 }

@@ -26,7 +26,7 @@ class BannerRequest extends FormRequest
     {
         return [
             'image' => ['file', 'image', 'required'],
-            'title' => ['required', 'min:5', 'unique:banners,title'],
+            'title' => ['required', 'string', 'min:5', 'unique:banners,title'],
             'link' => ['required', 'url']
         ];
     }

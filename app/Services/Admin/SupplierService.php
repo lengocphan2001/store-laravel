@@ -45,8 +45,7 @@ class SupplierService extends Service
     {
         $supplier = Supplier::query()->where('id', $id)->first();
         if (!$supplier) {
-
-            return abort(404);
+            abort(404);
         }
 
         return $supplier;
@@ -60,8 +59,7 @@ class SupplierService extends Service
     {
         $supplier = Supplier::query()->where('id', $id)->first();
         if (!$supplier) {
-
-            return abort(404);
+            abort(404);
         }
 
         $supplier->update([
@@ -82,8 +80,7 @@ class SupplierService extends Service
     {
         $supplier = Supplier::query()->where('id', $id)->first();
         if (!$supplier) {
-
-            return abort(404);
+            abort(404);
         }
 
         $supplier->delete();

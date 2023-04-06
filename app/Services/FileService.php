@@ -19,12 +19,12 @@ class FileService extends Service
      * @return $path
      */
 
-    public function uploadFile($data, $path)
+    public function uploadFile($data)
     {
         $file = $data['image'];
         $filename = time() . '_' . $file->getClientOriginalName();
-        Image::make($file)->encode('webp', 90)->resize(270, 250)->save(storage_path('app/public/images/' . $path . '/' . $filename . '.webp'));
-        $path = 'storage/images/' . $path . '/' . $filename . '.webp';
+        Image::make($file)->encode('webp', 90)->resize(270, 250)->save(storage_path('app/public/images/' . $filename . '.webp'));
+        $path = 'storage/images/' . $filename . '.webp';
 
         return $path;
     }
