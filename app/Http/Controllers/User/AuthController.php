@@ -6,7 +6,6 @@ use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
 use App\Services\User\OrderService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -19,8 +18,16 @@ class AuthController extends Controller
     public function detail ()
     {
         $data['title'] = UserHelper::getPageTitle(trans('user.detail.account'));
-        $data['orders'] = OrderService::getInstance()->getListOrders(auth()->guard('web')->id());
+        $data['orders'] = OrderService::getInstance()->getListOrders(2);
 
         return view('user.info.index')->with(['data' => $data]);
+    }
+
+    public function detailOrder($id)
+    {   
+        $data['title'] = UserHelper::getPageTitle(trans('user.detail.yourOrder'));
+        // $data['orders'] = OrderService::getInstance()->getOrderDetail($id);
+
+        return view('user.order.detail')->with(['data' => $data]);
     }
 }

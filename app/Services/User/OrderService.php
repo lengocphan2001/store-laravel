@@ -22,4 +22,16 @@ class OrderService extends Service
             ->where('user_id', $id)
             ->get();
     }
+
+    public function getOrderDetail($id)
+    {
+        $order = Order::query()
+        ->with(['orderDetails','orderDetails.productVariation.product','orderDetails.productVariation.size','orderDetails.productVariation.color'])
+        ->where('id', $id)->first();
+        if (!$order && $order['user_id'] != auth()->guard('web')->id()) {
+            abort(404);
+        }//end if
+
+        return $order;
+    }
 }
