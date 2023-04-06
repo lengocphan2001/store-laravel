@@ -91,6 +91,7 @@
         </div>
     </div>
     <!-- end page title -->
+    @include('admin.includes.upload')
 @endsection
 
 @section('admin_script')
