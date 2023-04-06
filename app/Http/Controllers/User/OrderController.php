@@ -12,7 +12,7 @@ class OrderController extends Controller
     public function detail($id)
     {
         $data['title'] = UserHelper::getPageTitle(trans('user.detail.orderDetail'));
-        $data['products'] = OrderService::getInstance()->getOrderDetail($id);
+        $data['products'] = OrderService::getInstance()->withUser(auth()->user())->getOrderDetail($id);
 
         return view('user.order.detail')->with(['data' => $data]);
     }

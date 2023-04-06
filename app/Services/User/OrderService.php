@@ -27,7 +27,7 @@ class OrderService extends Service
     {
         $order = Order::query()
         ->with(['orderDetails','orderDetails.productVariation.product','orderDetails.productVariation.size','orderDetails.productVariation.color'])
-        ->where('id',$id)
+        ->where('id', $id)
         ->where('user_id', $this->getUser()->id)
         ->first();
         if (!$order) {
