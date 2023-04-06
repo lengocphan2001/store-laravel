@@ -41,7 +41,7 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
         Route::post('/change-password', [PasswordController::class, 'changePassword'])->name('changePassword');
         Route::get('/dashboard', [AuthController::class, 'detail'])->name('detail');
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-        Route::get('/order', [OrderController::class, 'index'])->name('oderProduct');
+        Route::get('/order/{id}', [OrderController::class, 'detail'])->name('order.detail');
         Route::get('/cart', [CartController::class, 'index'])->name('cartProduct');
         Route::get('/payment', [PaymentController::class, 'payWithStripe'])->name('cartProduct');
         Route::get('/like-products', [LikeProductController::class, 'index'])->name('likeProduct');

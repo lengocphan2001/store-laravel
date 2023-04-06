@@ -22,4 +22,18 @@ class OrderService extends Service
         ->where('user_id', $this->getUser()->id)
         ->get();
     }
+
+    public function getOrderDetail($id)
+    {
+        $order = Order::query()
+        ->with(['orderDetails','orderDetails.productVariation.product','orderDetails.productVariation.size','orderDetails.productVariation.color'])
+        ->where('id', $id)
+        ->where('user_id', $this->getUser()->id)
+        ->first();
+        if (!$order) {
+            abort(404);
+        }//end if
+
+        return $order;
+    }
 }
