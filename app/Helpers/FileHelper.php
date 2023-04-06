@@ -17,7 +17,7 @@ class FileHelper
     {
         if (!$path) {
             return '';
-        } //end if
+        }//end if
 
         $urlParsed = parse_url($path);
         $urlParsed['path'] = trim($urlParsed['path'] ?? '', '/');
@@ -35,7 +35,7 @@ class FileHelper
     {
         if (!$path) {
             return null;
-        } //end if
+        }//end if
 
         $newPath = strstr($path, config('upload.path_origin_image'));
 
