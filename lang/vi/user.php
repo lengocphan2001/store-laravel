@@ -32,6 +32,7 @@ return [
         'order' => 'Đơn hàng',
         'account' => 'Chi tiết tài khoản',
         'yourOrder' => 'Đơn hàng của bạn',
+        'orderDetail' => 'Chi tiết đơn hàng',
         'orderId' => 'ID đơn hàng',
         'date' => 'Ngày mua',
         'payment' => 'Thanh toán',
@@ -42,6 +43,11 @@ return [
         'cod' => 'COD',
         'processing' => 'Đang giao',
         'success' => 'Thành công',
+        'image' => 'Ảnh',
+        'nameProduct' => 'Tên sản phẩm',
+        'color' => 'Màu',
+        'size' => 'Size',
+        'quantity' => 'Số lượng'
     ]
     
 ];

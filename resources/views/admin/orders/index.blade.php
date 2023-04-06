@@ -1,4 +1,3 @@
-@php use App\Models\Order; @endphp
 @extends('admin.layouts.master')
 @section('admin_head')
     <title>{{ $data['title'] }}</title>

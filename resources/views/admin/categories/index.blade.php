@@ -1,9 +1,8 @@
-@php use App\Models\Banner; @endphp
+@php use App\Models\Category; @endphp
 @extends('admin.layouts.master')
 @section('admin_head')
     <title>{{ $data['title'] }}</title>
     <meta content="{{ $data['title'] }}" name="description" />
-    <link rel="stylesheet" href="{{ asset('admin-assets\css\banner\banner.css') }}">
 @endsection
 
 @section('admin_style')
@@ -21,12 +20,13 @@
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><span><i
                                             class="bx bxs-home-circle"></i> {{ __('admin.sidebar.dashboard') }}</span></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ __('admin.sidebar.banner') }}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('admin.sidebar.category') }}</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- end page title -->
 
         <div class="row">
             <div class="col-12">
@@ -34,9 +34,9 @@
                     <div class="card-body">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
                             <div class="page-title-right">
-                                <h4 class="card-title">{{ __('admin.sidebar.banner') }}</h4>
+                                <h4 class="card-title">{{ __('admin.sidebar.category') }}</h4>
                             </div>
-                            <a class="btn btn-primary" href="{{ route('admin.banners.create') }}">
+                            <a class="btn btn-primary" href="{{ route('admin.categories.create') }}">
                                 <i class="mdi mdi-plus me-2"></i> {{ __('admin.action.create') }}
                             </a>
                         </div>
@@ -44,32 +44,31 @@
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th class="text-center align-middle">{{ __('admin.label.image') }}</th>
                                     <th class="text-center align-middle">{{ __('admin.label.title') }}</th>
-                                    <th class="text-center align-middle">{{ __('admin.label.link') }}</th>
+                                    <th class="text-center align-middle">{{ __('admin.label.parent_category') }}</th>
                                     <th class="text-center align-middle">{{ __('admin.label.status.title') }}</th>
                                     <th class="text-center align-middle">{{ __('admin.label.action') }}</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @foreach ($data['banners'] as $result)
+                                @foreach ($data['categories'] as $result)
                                     <tr>
-                                        <td><img class="image-list-product" src="{{ asset($result['image']) }}"
-                                                alt="Ảnh lỗi">
-                                        </td>
                                         <td class="align-middle">
-                                            <a href="{{ route('admin.banners.edit', ['banner' => $result['id']]) }}">
-                                                {{ $result['title'] }}
+                                            <a href="{{ route('admin.categories.show', ['category' => $result['id']]) }}">
+                                                {{ $result['name'] }}
                                             </a>
                                         </td>
-                                        <td class="align-middle">
-                                            <a href="{{ $result['link'] }}">
-                                                {{ $result['link'] }}
-                                            </a>
-                                        </td>
+                                        @if (!$result['parent'])
+                                            <td class="align-middle">
+                                            </td>
+                                        @else
+                                            <td class="align-middle">
+                                                {{$result['parent']['name']}}
+                                            </td>
+                                        @endif
                                         <td class="text-center align-middle">
-                                            @if ($result['status'] == Banner::STATUS_ACTIVE)
+                                            @if ($result['status'] == Category::STATUS_ACTIVE)
                                                 <span class='badge badge-pill badge-soft-success font-size-11'
                                                     style='line-height: unset!important;'>{{ __('admin.label.status.active') }}</span>
                                             @else
@@ -78,12 +77,12 @@
                                             @endif
                                         </td>
                                         <td class="text-center align-middle">
-                                            <a href="{{ route('admin.banners.edit', ['banner' => $result['id']]) }}"
+                                            <a href="{{ route('admin.categories.edit', ['category' => $result['id']]) }}"
                                                 class="btn btn-primary mr-3" style="margin-right: 10px;"><i
                                                     class="bx bx-pencil"></i></a>
                                             <a href="javascript:void(0)" data-id="{{ $result['id'] }}" data-toggle="modal"
                                                 data-message="{{ __('admin.label.confirm_delete') }}"
-                                                data-url="{{ route('admin.banners.destroy', ['banner' => $result['id']]) }}"
+                                                data-url="{{ route('admin.categories.destroy', ['category' => $result['id']]) }}"
                                                 class="btn btn-danger delete" data-bs-toggle="modal"
                                                 data-bs-target=".deleteModal">
                                                 <i class="bx bx-trash"></i>

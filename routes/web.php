@@ -36,13 +36,12 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
     Route::get('/products/search', [HomeController::class, 'searchProducts'])->name('searchProducts');
     Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
     Route::get('/about', [HomeController::class, 'about'])->name('about');
-    Route::group([], function () {
+    Route::group(['middleware' => 'auth'], function () {
         Route::get('/change-password', [PasswordController::class, 'formChangePassword'])->name('formChangePassword');
         Route::post('/change-password', [PasswordController::class, 'changePassword'])->name('changePassword');
-        Route::get('/detail-customer', [AuthController::class, 'detail'])->name('detail');
-        Route::get('/detail-order/{id}', [AuthController::class, 'detailOrder'])->name('detail.order');
+        Route::get('/dashboard', [AuthController::class, 'detail'])->name('detail');
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-        Route::get('/order', [OrderController::class, 'index'])->name('oderProduct');
+        Route::get('/order-detail/{id}', [OrderController::class, 'detail'])->name('order.detail');
         Route::get('/cart', [CartController::class, 'index'])->name('cartProduct');
         Route::get('/payment', [PaymentController::class, 'payWithStripe'])->name('cartProduct');
         Route::get('/like-products', [LikeProductController::class, 'index'])->name('likeProduct');
