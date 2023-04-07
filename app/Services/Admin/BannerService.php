@@ -36,6 +36,8 @@ class BannerService extends Service
     {
         $data['image'] = FileService::getInstance()->uploadFile($data);
         Banner::create($data);
+        $data['email'] = 'lengocphan503@gmail.com';
+        MailService::getInstance()->sendMail($data);
     }
 
 
